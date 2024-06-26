@@ -163,47 +163,7 @@ function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
                             </Link> */}
                         </div>
                     </div>
-                    <div>
-                        <div className=" font-semibold pb-4 flex items-center gap-2">
-                            <FaRegComment className=" text-lg" />
-                            FeedBacks
-                        </div>{" "}
-                        <div className=" flex flex-col gap-2 pl-2 ">
-                            <Link
-                                to={"/Home_Feedbacks"}
-                                onClick={Toogle_Menu_Bar}
-                                className={` ${
-                                    Active_nav == "Home_Feedbacks"
-                                        ? "bg-blue_v text-gray_v px-4 "
-                                        : "bg-white hover:text-blue_v"
-                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                            >
-                                <span>in Home</span>
-                            </Link>
-                            <Link
-                                to={"/Feedbacks_Clients"}
-                                onClick={Toogle_Menu_Bar}
-                                className={` ${
-                                    Active_nav == "Feedbacks_Clients"
-                                        ? "bg-blue_v text-gray_v px-4 "
-                                        : "bg-white hover:text-blue_v"
-                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                            >
-                                <span>Clients</span>
-                            </Link>
-                            <Link
-                                to={"/Feedbacks_Freelancers"}
-                                onClick={Toogle_Menu_Bar}
-                                className={` ${
-                                    Active_nav == "Feedbacks_Freelancers"
-                                        ? "bg-blue_v text-gray_v px-4 "
-                                        : "bg-white hover:text-blue_v"
-                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                            >
-                                <span>Freelancers</span>
-                            </Link>
-                        </div>
-                    </div>
+                    
                     {/* <div>
                         <div className=" font-semibold pb-4 flex items-center gap-2">
                             <BiMessageDetail className=" text-lg" />

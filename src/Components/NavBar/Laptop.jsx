@@ -151,62 +151,7 @@ function Laptop() {
                     </Link> */}
                 </div>
             </div>
-            <div>
-                <div className=" font-semibold pb-4  flex gap-2 items-center ">
-                    <FaRegComment className=" text-lg" />
-                    Feedbacks
-                </div>
-                <div className=" flex flex-col gap-2 pl-2 ">
-                    <Link
-                        to={"/Home_Feedbacks"}
-                        className={` ${
-                            Active_nav == "Home_Feedbacks"
-                                ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-blue_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>in Home</span>
-                    </Link>
-                    <Link
-                        to={"/Feedbacks_Clients"}
-                        className={` ${
-                            Active_nav == "Feedbacks_Clients"
-                                ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-blue_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>Clients</span>
-                    </Link>
-                    <Link
-                        to={"/Feedbacks_Freelancers"}
-                        className={` ${
-                            Active_nav == "Feedbacks_Freelancers"
-                                ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-blue_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>Freelancers</span>
-                    </Link>
-                </div>
-            </div>
-            {/* <div>
-                <div className=" font-semibold pb-4  flex gap-2 items-center ">
-                    <BiMessageDetail className=" text-lg" />
-                    Messages
-                </div>
-                <div className=" flex flex-col gap-2 pl-2 ">
-                    <Link
-                        to={"/Messages"}
-                        className={` ${
-                            Active_nav == "Messages"
-                                ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-blue_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>All messages</span>
-                    </Link>
-                </div>
-            </div> */}
+           
             <div>
                 <div className=" font-semibold pb-4  flex gap-2 items-center ">
                     <PiListFill className=" text-lg" />
