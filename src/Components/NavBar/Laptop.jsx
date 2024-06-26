@@ -14,6 +14,8 @@ import { FaRegComment } from "react-icons/fa6";
 import { BiMessageDetail } from "react-icons/bi";
 import { PiListFill } from "react-icons/pi";
 import { RiContactsLine } from "react-icons/ri";
+import { FaRegBuilding } from "react-icons/fa";
+import { MdOutlineAddCircleOutline } from "react-icons/md";
 
 function Laptop() {
     const Navigate = useNavigate();
@@ -51,9 +53,9 @@ function Laptop() {
     };
     return (
         <div className="flex flex-col gap-8 text-sm text-gray_v pl-8 py-4">
-            <div className=" flex flex-col items-center justify-center">
-                <img src={Logo} alt="Logo" className="w-24 " />
-                {/* <div className="text-sm text-gray_v font-semibold">Admin Panel</div> */}
+            <div className=" flex flex-col items-center justify-center text-gray_v">
+                <img src={Logo} alt="Logo" className="w-16 " />
+                {/* <div className="text-sm text-white font-semibold">Admin Panel</div> */}
             </div>
             <div>
                 <div className=" font-semibold pb-4  flex gap-2 items-center ">
@@ -65,8 +67,8 @@ function Laptop() {
                         to={"/Home"}
                         className={` ${
                             Active_nav == "Home"
-                                ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-blue_v"
+                                ? "bg-blue_v text-white px-4 "
+                                : "bg-white hover:text-blue_v text-gray_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full `}
                     >
                         <span>Statistics</span>
@@ -75,8 +77,8 @@ function Laptop() {
                         to={"/Users"}
                         className={` ${
                             Active_nav == "Users"
-                                ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-blue_v"
+                                ? "bg-blue_v text-white px-4 "
+                                : "bg-white hover:text-blue_v text-gray_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
                         <span>Users</span>
@@ -85,73 +87,36 @@ function Laptop() {
             </div>
             <div>
                 <div className=" font-semibold pb-4  flex gap-2 items-center ">
-                    <MdOutlineWorkOutline className=" text-lg" />
-                    Projects
+                    {/* <FaRegBuilding className=" text-lg" /> */}
+                    Medical Institustions
                 </div>
                 <div className=" flex flex-col gap-2 pl-2 ">
                     <Link
-                        to={"/All_Projects"}
+                        to={"/Institustions"}
                         className={` ${
-                            Active_nav == "All_Projects"
-                                ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-blue_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                            Active_nav == "Institustions"
+                                ? "bg-blue_v text-white px-4 "
+                                : "bg-white hover:text-blue_v text-gray_v"
+                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full flex items-center gap-2  `}
                     >
-                        <span>All Projects</span>
+                        <FaRegBuilding className=" text-lg" />
+                        <span>Institustions</span>
                     </Link>
+
                     <Link
-                        to={"/Projects_Requests"}
+                        to={"/new_institution"}
                         className={` ${
-                            Active_nav == "Projects_Requests"
-                                ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-blue_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                            Active_nav == "new_institution"
+                                ? "bg-blue_v text-white px-4 "
+                                : "bg-white hover:text-blue_v text-gray_v"
+                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[180px] rounded-full flex items-center gap-2  `}
                     >
-                        <span>Request</span>
+                        <MdOutlineAddCircleOutline className=" text-lg" />
+                        <span> new institution</span>
                     </Link>
-                    <Link
-                        to={"/Projects_Applications"}
-                        className={` ${
-                            Active_nav == "Projects_Applications"
-                                ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-blue_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>Applications</span>
-                    </Link>
-                    {/* <Link
-                        to={"/Projects_Accepted"}
-                        className={` ${
-                            Active_nav == "Projects_Accepted"
-                                ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-blue_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>Accepted</span>
-                    </Link> */}
-                    <Link
-                        to={"/Projects_Paying"}
-                        className={` ${
-                            Active_nav == "Projects_Paying"
-                                ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-blue_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>Payment</span>
-                    </Link>
-                    {/* <Link
-                        to={"/Projects_At_Work"}
-                        className={` ${
-                            Active_nav == "Projects_At_Work"
-                                ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-blue_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>At Work</span>
-                    </Link> */}
                 </div>
             </div>
-           
+
             <div>
                 <div className=" font-semibold pb-4  flex gap-2 items-center ">
                     <PiListFill className=" text-lg" />
@@ -162,8 +127,8 @@ function Laptop() {
                         to={"/Terms"}
                         className={` ${
                             Active_nav == "Terms"
-                                ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-blue_v"
+                                ? "bg-blue_v text-white px-4 "
+                                : "bg-white hover:text-blue_v text-gray_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
                         <span>Terms of service</span>
@@ -180,8 +145,8 @@ function Laptop() {
                         to={"/Contact"}
                         className={` ${
                             Active_nav == "Contact"
-                                ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-blue_v"
+                                ? "bg-blue_v text-white px-4 "
+                                : "bg-white hover:text-blue_v text-gray_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
                         <span> Messages</span>

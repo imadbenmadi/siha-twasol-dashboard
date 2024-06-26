@@ -15,8 +15,9 @@ import Projects_Applications_Profile from "./Components/Projects/Applications/Pr
 import Projects_Paying from "./Components/Projects/Paying/Paying.jsx";
 import Projects_Paying_item from "./Components/Projects/Paying/item.jsx";
 
-import All_Projects from "./Components/Projects/All_Projects/All_Projects.jsx";
-import All_Projects_item from "./Components/Projects/All_Projects/Item.jsx";
+import Institustions from "./Components/Projects/Institustions/Institustions.jsx";
+import Institustions_item from "./Components/Projects/Institustions/Item.jsx";
+import new_institution from "./Components/Projects/Institustions/New.jsx";
 
 import Request_Project_Item from "./Components/Projects/Requests/Item.jsx";
 import Feedbacks_Clients from "./Components/Feedbacks/Clients_Freedbacks/Clients_Freedbacks.jsx";
@@ -63,13 +64,18 @@ const routes = createBrowserRouter([
             },
 
             {
-                path: "/All_Projects",
-                element: <All_Projects />,
+                path: "/Institustions",
+                element: <Institustions />,
                 errorElement: <ErrorElement />,
             },
             {
-                path: "/All_Projects/:id",
-                element: <All_Projects_item />,
+                path: "/Institustions/:id",
+                element: <Institustions_item />,
+                errorElement: <ErrorElement />,
+            },
+            {
+                path: "/new_institution",
+                element: <new_institution />,
                 errorElement: <ErrorElement />,
             },
             {
