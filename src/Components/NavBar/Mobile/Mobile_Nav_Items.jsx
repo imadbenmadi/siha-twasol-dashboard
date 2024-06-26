@@ -128,17 +128,7 @@ function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
                             >
                                 <span>Applications</span>
                             </Link>
-                            {/* <Link
-                                to={"/Projects_Accepted"}
-                                onClick={Toogle_Menu_Bar}
-                                className={` ${
-                                    Active_nav == "Projects_Accepted"
-                                        ? "bg-blue_v text-white px-4 "
-                                        : "bg-white hover:text-blue_v"
-                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                            >
-                                <span>Accepted</span>
-                            </Link> */}
+                            
                             <Link
                                 to={"/Projects_Paying"}
                                 onClick={Toogle_Menu_Bar}
@@ -150,39 +140,10 @@ function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
                             >
                                 <span>Payment</span>
                             </Link>
-                            {/* <Link
-                                to={"/Projects_At_Work"}
-                                onClick={Toogle_Menu_Bar}
-                                className={` ${
-                                    Active_nav == "Projects_At_Work"
-                                        ? "bg-blue_v text-white px-4 "
-                                        : "bg-white hover:text-blue_v"
-                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                            >
-                                <span>At Work</span>
-                            </Link> */}
+                            
                         </div>
                     </div>
                     
-                    {/* <div>
-                        <div className=" font-semibold pb-4 flex items-center gap-2">
-                            <BiMessageDetail className=" text-lg" />
-                            Messages
-                        </div>{" "}
-                        <div className=" flex flex-col gap-2 pl-2 ">
-                            <Link
-                                to={"/Messages"}
-                                onClick={Toogle_Menu_Bar}
-                                className={` ${
-                                    Active_nav == "Messages"
-                                        ? "bg-blue_v text-white px-4 "
-                                        : "bg-white hover:text-blue_v"
-                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                            >
-                                <span>All messages</span>
-                            </Link>
-                        </div>
-                    </div> */}
                     <div>
                         <div className=" font-semibold pb-4 flex items-center gap-2">
                             <PiListFill className=" text-lg" />
