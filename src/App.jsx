@@ -4,43 +4,52 @@ import { Outlet } from "react-router";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import Logo from "../public/Logo.png";
+import Login_icon from "../public/Login.png";
 import { useAppContext } from "./AppContext";
+import NavBar from "./Components/NavBar/NavBar";
 function App() {
     const Navigate = useNavigate();
     const [loading, setLoading] = useState(true);
-    // const [userType, setUserType] = useState(null);
-    const { set_Auth, isAuth, store_login } = useAppContext();
+    const { set_Auth } = useAppContext();
+
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:3000/Check_Auth",
+                    "http://localhost:3000/Admin_CheckAuth",
                     {
                         withCredentials: true,
-                        validateStatus: () => true,
+                        // validateStatus: () => true,
                     }
                 );
+
                 if (response.status == 200) {
-                    store_login(response.data.userId, response.data.userType);
-                    // setUserType(response.data.userType);
                     set_Auth(true);
+                    // Navigate("/Home");
                 } else {
                     set_Auth(false);
+                    Navigate("/Login");
                 }
             } catch (error) {
                 set_Auth(false);
+                Navigate("/Login");
             }
         };
         const fetch_images = () => {
             return new Promise((resolve, reject) => {
-                const images = [Logo];
+                const images = [Logo, Login_icon];
+                let loadedCount = 0;
+                if (images.length === 0) resolve();
                 images.forEach((imageSrc) => {
                     const img = new Image();
                     img.onload = () => {
-                        resolve();
+                        loadedCount++;
+                        if (loadedCount === images.length) {
+                            resolve(); // Resolve promise when all images are loaded
+                        }
                     };
                     img.onerror = () => {
-                        resolve();
+                        resolve(); // Reject if any image fails to load
                     };
                     img.src = imageSrc;
                 });
@@ -80,7 +89,7 @@ function App() {
                     });
             });
         };
-
+        // Promise.all([fetchData()]);
         Promise.all([fetch_fonts(), fetch_images(), fetchData()])
             .then(() => {
                 setLoading(false);
@@ -92,11 +101,21 @@ function App() {
     if (loading) {
         return (
             <div className=" w-screen h-screen flex flex-col items-center justify-center">
-                <img src={Logo} alt="Logo" />
+                <img src={Logo} alt="" />
                 <span className="loader"></span>
             </div>
         );
-    } else return <Outlet />;
+    } else
+        return (
+            <div className="relative h-screen overflow-y-auto custom-overflow overflow-x-hidden flex items-start justify-start  ">
+                <div className="  h-screen overflow-y-auto custom-overflow shrink-0 ">
+                    <NavBar />
+                </div>
+                <div className=" pt-[60px] md:pt-0 w-screen md:w-[calc(100vw-210px)] h-screen overflow-y-auto custom-overflow">
+                    <Outlet />
+                </div>
+            </div>
+        );
 }
 
 export default App;
