@@ -151,7 +151,7 @@ function Home() {
 
         return (
             <div>
-                <div className="text-perpol_b text-2xl font-semibold pt-6 pl-6">
+                <div className="text-blue_v text-2xl font-semibold pt-6 pl-6">
                     Home page
                 </div>
                 <div className="flex justify-center items-center flex-wrap gap-6 mx-6 my-6">

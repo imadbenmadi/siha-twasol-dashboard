@@ -180,7 +180,7 @@ function Terms({ initialContent }) {
 
     return (
         <>
-            <div className=" text-xl font-semibold text-perpol_b my-5 pl-5">
+            <div className=" text-xl font-semibold text-blue_v my-5 pl-5">
                 {" "}
                 Terms & Conditions{" "}
             </div>{" "}

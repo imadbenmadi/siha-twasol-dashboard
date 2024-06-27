@@ -103,7 +103,7 @@ function List() {
     } else
         return (
             <div className="py-6 px-4">
-                <div className="text-xl font-semibold text-perpol_b pb-6">
+                <div className="text-xl font-semibold text-blue_v pb-6">
                     Project Requirements & Applicants
                 </div>
                 {!Applicants || Applicants.length === 0 ? (

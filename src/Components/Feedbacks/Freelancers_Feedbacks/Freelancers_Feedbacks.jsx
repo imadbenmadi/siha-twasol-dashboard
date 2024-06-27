@@ -65,7 +65,7 @@ function Freelancers_Feedbacks() {
         );
     return (
         <div className=" py-6 px-4">
-            <div className=" text-xl font-semibold text-perpol_b">
+            <div className=" text-xl font-semibold text-blue_v">
                 {" "}
                 Freelancers Feedbacks to Clients
             </div>

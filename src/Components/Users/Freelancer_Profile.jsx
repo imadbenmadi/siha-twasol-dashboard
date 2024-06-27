@@ -540,7 +540,7 @@ function Freelancer_Profile() {
     } else {
         return (
             <div className=" pt-6 pl-6">
-                <div className="text-xl font-semibold  text-perpol_b pb-6">
+                <div className="text-xl font-semibold  text-blue_v pb-6">
                     Freelancer Profile
                 </div>
                 <Hero user={user} />

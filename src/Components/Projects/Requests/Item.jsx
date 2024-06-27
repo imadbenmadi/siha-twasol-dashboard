@@ -185,7 +185,7 @@ function Freelancer_Process_item() {
     else
         return (
             <div className=" w-full h-full relative py-6 px-4">
-                <div className="text-xl font-semibold  text-perpol_b pb-6">
+                <div className="text-xl font-semibold  text-blue_v pb-6">
                     Projects Request
                 </div>
                 <div className=" flex flex-wrap items-center justify-center gap-x-10 gap-y-4">

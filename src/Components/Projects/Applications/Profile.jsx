@@ -709,7 +709,7 @@ function Profile() {
                         </div>
                     </div>
                 )}
-                <div className="text-xl font-semibold  text-perpol_b pb-6">
+                <div className="text-xl font-semibold  text-blue_v pb-6">
                     Freelancer Profile
                 </div>
                 <div className=" flex flex-wrap items-center justify-center gap-x-10 gap-y-4">

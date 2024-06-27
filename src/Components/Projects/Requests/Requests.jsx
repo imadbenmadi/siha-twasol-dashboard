@@ -63,8 +63,8 @@ function Requests() {
     } else {
         return (
             <div className="py-6 px-4">
-                <div className="text-xl font-semibold  text-perpol_b pb-6">
-                    Dzidcom Projects Requests
+                <div className="text-xl font-semibold  text-blue_v pb-6">
+                    Projects Requests
                 </div>
                 {Projects.length === 0 ? (
                     <div className="text-center font-semibold text-sm text-gray-600 pt-6">

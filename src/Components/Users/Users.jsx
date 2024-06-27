@@ -75,9 +75,7 @@ function Users() {
     } else {
         return (
             <div className="py-6 px-4">
-                <div className="text-xl font-semibold  text-perpol_b">
-                    Dzidcom Users
-                </div>
+                <div className="text-xl font-semibold  text-blue_v">Users</div>
                 <div className="mt-4 flex flex-col md:flex-row gap-4 justify-center md:justify-end md:mr-6 md:gap-6 text-gray-600">
                     <div className="border p-2 mr-4 rounded-md flex items-center justify-between gap-2 text-sm font-semibold min-w-[300px]">
                         <IoSearch className="w-fit shrink-0" />
@@ -139,9 +137,15 @@ function Users() {
                                         {user.telephone}
                                     </td>
                                     <td className="border px-4 py-2">
-                                        {user.userType === "client"
-                                            ? "Client"
-                                            : "Freelancer"}
+                                        {user.userType === "malad" ? (
+                                            "Malad"
+                                        ) : user.userType === "medicin" ? (
+                                            "Medicin"
+                                        ) : user.userType === "worker" ? (
+                                            "Worker"
+                                        ) : (
+                                            <span className=" text-red-500">not set</span>
+                                        )}
                                     </td>
                                     <td className="border px-4 py-2">
                                         {/* {new Date(

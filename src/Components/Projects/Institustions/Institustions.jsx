@@ -75,8 +75,8 @@ function All_Projects() {
     } else {
         return (
             <div className="py-6 px-4">
-                <div className="text-xl font-semibold  text-perpol_b pb-6">
-                    Dzidcom Projects
+                <div className="text-xl font-semibold  text-blue_v pb-6">
+                    Projects
                 </div>
                 <div className="mt-4 flex flex-col md:flex-row gap-4 justify-center md:justify-end md:mr-6 md:gap-6 text-gray-600">
                     <div className="border p-2 mr-4 rounded-md flex items-center justify-between gap-2 text-sm font-semibold min-w-[300px]">
