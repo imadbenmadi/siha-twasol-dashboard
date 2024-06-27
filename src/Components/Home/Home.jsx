@@ -63,6 +63,7 @@ function Home() {
                         withCredentials: true,
                     }
                 );
+                console.log(response.data);
                 if (response.status === 200) {
                     setData(response.data);
                 } else {
@@ -79,13 +80,13 @@ function Home() {
 
     if (loading) {
         return (
-            <div className=" w-[80vw] h-[80vh] flex flex-col items-center justify-center">
+            <div className="w-[80vw] h-[80vh] flex flex-col items-center justify-center">
                 <span className="loader"></span>
             </div>
         );
     } else if (error) {
         return (
-            <div className=" w-screen h-screen flex items-center justify-center">
+            <div className="w-screen h-screen flex items-center justify-center">
                 <div className="text-red-600 font-semibold">
                     {error.message}
                 </div>
@@ -105,43 +106,43 @@ function Home() {
             return countByDate;
         };
 
-        // Process freelancers and clients
-        const freelancersByDate = processData(data?.freelancers);
-        const clientsByDate = processData(data?.clients);
-        const projectsByDate = processData(data?.projects);
+        // Process Malads, Medecins, and Companies
+        const maladByDate = processData(data?.Malads);
+        const medecinsByDate = processData(data?.Medecins);
+        const companiesByDate = processData(data?.Companies);
 
         const allDates = Array.from(
             new Set([
-                ...Object.keys(freelancersByDate),
-                ...Object.keys(clientsByDate),
-                ...Object.keys(projectsByDate),
+                ...Object.keys(maladByDate),
+                ...Object.keys(medecinsByDate),
+                ...Object.keys(companiesByDate),
             ])
         ).sort();
 
         // Create datasets
-        const freelancersData = allDates.map(
-            (date) => freelancersByDate[date] || 0
+        const maladData = allDates.map((date) => maladByDate[date] || 0);
+        const medecinsData = allDates.map((date) => medecinsByDate[date] || 0);
+        const companiesData = allDates.map(
+            (date) => companiesByDate[date] || 0
         );
-        const clientsData = allDates.map((date) => clientsByDate[date] || 0);
-        const projectsData = allDates.map((date) => projectsByDate[date] || 0);
         const chart_data = {
             labels: allDates,
             datasets: [
                 {
-                    label: "Freelancers",
-                    data: freelancersData,
+                    label: "Malads",
+                    data: maladData,
                     borderColor: "rgb(255, 99, 132)",
                     backgroundColor: "rgba(255, 99, 132, 0.5)",
                 },
                 {
-                    label: "Clients",
-                    data: clientsData,
+                    label: "Medecins",
+                    data: medecinsData,
                     borderColor: "rgb(53, 162, 235)",
                     backgroundColor: "rgba(53, 162, 235, 0.5)",
                 },
                 {
-                    label: "Projects",
-                    data: projectsData,
+                    label: "Companies",
+                    data: companiesData,
                     borderColor: "rgb(60, 100, 235)",
                     backgroundColor: "rgba(60, 100, 235, 0.5)",
                 },
@@ -150,64 +151,51 @@ function Home() {
 
         return (
             <div>
-                <div className=" text-perpol_b text-2xl font-semibold pt-6 pl-6">
+                <div className="text-perpol_b text-2xl font-semibold pt-6 pl-6">
                     Home page
                 </div>
-                <div className=" flex justify-center items-center flex-wrap gap-6 mx-6 my-6">
-                    <div className=" border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
-                        <div className=" text-xs font-semibold pb-2 text-gray_v w-full">
-                            Total users:
+                <div className="flex justify-center items-center flex-wrap gap-6 mx-6 my-6">
+                    <div className="border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
+                        <div className="text-xs font-semibold pb-2 text-gray_v w-full">
+                            Total Malads:
                         </div>
-                        <div className=" flex justify-between gap-2 mx-2 w-full">
-                            <div className="  font-semibold text-2xl">
-                                {data?.freelancers_nbr + data?.clients_nbr}
+                        <div className="flex justify-between gap-2 mx-2 w-full">
+                            <div className="font-semibold text-2xl">
+                                {data?.Malad_nbr}
                             </div>
-                            <div className=" shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
-                                <LiaUsersSolid className=" shrink-0 text-2xl" />
-                            </div>
-                        </div>
-                    </div>
-                    <div className=" border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
-                        <div className=" text-xs font-semibold pb-2 text-gray_v w-full">
-                            Freelancers:
-                        </div>
-                        <div className=" flex justify-between gap-2 mx-2 w-full">
-                            <div className="  font-semibold text-2xl">
-                                {data?.freelancers_nbr}
-                            </div>
-                            <div className=" shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
-                                <SiFreelancer className=" shrink-0 text-2xl" />
+                            <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
+                                <LiaUsersSolid className="shrink-0 text-2xl" />
                             </div>
                         </div>
                     </div>
-                    <div className=" border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
-                        <div className=" text-xs font-semibold pb-2 text-gray_v w-full">
-                            Clients:
+                    <div className="border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
+                        <div className="text-xs font-semibold pb-2 text-gray_v w-full">
+                            Medecins:
                         </div>
-                        <div className=" flex justify-between gap-2 mx-2 w-full">
-                            <div className="  font-semibold text-2xl">
-                                {data?.clients_nbr}
+                        <div className="flex justify-between gap-2 mx-2 w-full">
+                            <div className="font-semibold text-2xl">
+                                {data?.Medecin_nbr}
                             </div>
-                            <div className=" shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
-                                <FaUserTie className=" shrink-0 text-2xl" />
+                            <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
+                                <SiFreelancer className="shrink-0 text-2xl" />
                             </div>
                         </div>
                     </div>
-                    <div className=" border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
-                        <div className=" text-xs font-semibold pb-2 text-gray_v w-full">
-                            Total Projects:
+                    <div className="border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
+                        <div className="text-xs font-semibold pb-2 text-gray_v w-full">
+                            Companies:
                         </div>
-                        <div className=" flex justify-between gap-2 mx-2 w-full">
-                            <div className="  font-semibold text-2xl">
-                                {data?.projects_nbr}
+                        <div className="flex justify-between gap-2 mx-2 w-full">
+                            <div className="font-semibold text-2xl">
+                                {data?.Company_nbr}
                             </div>
-                            <div className=" shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
-                                <MdOutlineWork className=" shrink-0 text-2xl" />
+                            <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
+                                <FaUserTie className="shrink-0 text-2xl" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className=" py-12">
+                <div className="py-12">
                     <Line options={options} data={chart_data} />
                 </div>
             </div>
