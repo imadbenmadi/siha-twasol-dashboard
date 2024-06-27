@@ -8,12 +8,10 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { GoHome } from "react-icons/go";
-import { MdOutlineWorkOutline } from "react-icons/md";
-import { FaRegComment } from "react-icons/fa6";
-import { BiMessageDetail } from "react-icons/bi";
 import { PiListFill } from "react-icons/pi";
 import { RiContactsLine } from "react-icons/ri";
-
+import { FaRegBuilding } from "react-icons/fa";
+import { MdOutlineAddCircleOutline } from "react-icons/md";
 function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
     const Navigate = useNavigate();
     const { set_Auth } = useAppContext();
@@ -58,7 +56,7 @@ function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
                 } absolute   transition-transform duration-300 select-none w-[100vw]
                   z-50    text-black_text  bg-white `}
             >
-                <div className="flex flex-col gap-8 text-sm text-white pl-8 py-4 h-screen overflow-auto">
+                <div className="flex flex-col gap-8 text-sm text-black_text pl-8 py-4 h-screen overflow-auto">
                     <div>
                         <div className=" font-semibold pb-4 flex items-center gap-2">
                             <GoHome className=" text-lg" />
@@ -91,20 +89,23 @@ function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
                     </div>
                     <div>
                         <div className=" font-semibold pb-4 flex items-center gap-2">
-                            <MdOutlineWorkOutline className=" text-lg" />
-                            Projects
+                            {/* <MdOutlineWorkOutline className=" text-lg" /> */}
+                            Medical Institustions
                         </div>{" "}
                         <div className=" flex flex-col gap-2 pl-2 ">
                             <Link
-                                to={"/All_Projects"}
+                                to={"/Institustions"}
                                 onClick={Toogle_Menu_Bar}
                                 className={` ${
-                                    Active_nav == "All_Projects"
+                                    Active_nav == "Institustions"
                                         ? "bg-blue_v text-white px-4 "
                                         : "bg-white hover:text-blue_v"
-                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                                }  transition-all duration-150  cursor-pointer py-1 select-none 
+                                flex items-center gap-2 
+                                    w-[150px] rounded-full  `}
                             >
-                                <span>All Projects</span>
+                                <FaRegBuilding className=" text-lg" />
+                                <span>Institustions</span>
                             </Link>
                             <Link
                                 to={"/Projects_Requests"}
@@ -113,37 +114,17 @@ function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
                                     Active_nav == "Projects_Requests"
                                         ? "bg-blue_v text-white px-4 "
                                         : "bg-white hover:text-blue_v"
-                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                                }  transition-all duration-150  cursor-pointer py-1 select-none 
+                                flex items-center gap-2 
+                                    w-[180px] rounded-full  `}
                             >
-                                <span>Request</span>
+                                <MdOutlineAddCircleOutline className=" text-lg" />
+
+                                <span> new institution</span>
                             </Link>
-                            <Link
-                                to={"/Projects_Applications"}
-                                onClick={Toogle_Menu_Bar}
-                                className={` ${
-                                    Active_nav == "Projects_Applications"
-                                        ? "bg-blue_v text-white px-4 "
-                                        : "bg-white hover:text-blue_v"
-                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                            >
-                                <span>Applications</span>
-                            </Link>
-                            
-                            <Link
-                                to={"/Projects_Paying"}
-                                onClick={Toogle_Menu_Bar}
-                                className={` ${
-                                    Active_nav == "Projects_Paying"
-                                        ? "bg-blue_v text-white px-4 "
-                                        : "bg-white hover:text-blue_v"
-                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                            >
-                                <span>Payment</span>
-                            </Link>
-                            
                         </div>
                     </div>
-                    
+
                     <div>
                         <div className=" font-semibold pb-4 flex items-center gap-2">
                             <PiListFill className=" text-lg" />

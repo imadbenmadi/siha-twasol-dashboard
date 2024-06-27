@@ -18,7 +18,7 @@ function Mobile_Nav() {
                         <img
                             src={Logo}
                             alt="Logo"
-                            className=" w-[110px] lg:w-[145px] "
+                            className=" w-[50px] lg:w-[145px] "
                         />
                     </Link>
                 </div>

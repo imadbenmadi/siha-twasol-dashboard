@@ -9,9 +9,6 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import Logo from "../../../public/Logo.png";
 import { GoHome } from "react-icons/go";
-import { MdOutlineWorkOutline } from "react-icons/md";
-import { FaRegComment } from "react-icons/fa6";
-import { BiMessageDetail } from "react-icons/bi";
 import { PiListFill } from "react-icons/pi";
 import { RiContactsLine } from "react-icons/ri";
 import { FaRegBuilding } from "react-icons/fa";
@@ -97,7 +94,8 @@ function Laptop() {
                             Active_nav == "Institustions"
                                 ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-blue_v text-gray_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full flex items-center gap-2  `}
+                            }  transition-all duration-150  cursor-pointer py-1 select-none  
+                        w-[150px] rounded-full flex items-center gap-2  `}
                     >
                         <FaRegBuilding className=" text-lg" />
                         <span>Institustions</span>
