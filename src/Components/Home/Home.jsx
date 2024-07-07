@@ -3,6 +3,9 @@ import axios from "axios";
 import { LiaUsersSolid } from "react-icons/lia";
 import { SiFreelancer } from "react-icons/si";
 import { MdOutlineWork } from "react-icons/md";
+import { FaUserDoctor } from "react-icons/fa6";
+import { FaRegBuilding } from "react-icons/fa";
+
 import { FaUserTie } from "react-icons/fa6";
 import {
     Chart as ChartJS,
@@ -141,7 +144,7 @@ function Home() {
                     backgroundColor: "rgba(53, 162, 235, 0.5)",
                 },
                 {
-                    label: "Companies",
+                    label: "Instututions",
                     data: companiesData,
                     borderColor: "rgb(60, 100, 235)",
                     backgroundColor: "rgba(60, 100, 235, 0.5)",
@@ -157,7 +160,7 @@ function Home() {
                 <div className="flex justify-center items-center flex-wrap gap-6 mx-6 my-6">
                     <div className="border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
                         <div className="text-xs font-semibold pb-2 text-gray_v w-full">
-                            Total Malads:
+                            Patients:
                         </div>
                         <div className="flex justify-between gap-2 mx-2 w-full">
                             <div className="font-semibold text-2xl">
@@ -177,20 +180,20 @@ function Home() {
                                 {data?.Medecin_nbr}
                             </div>
                             <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
-                                <SiFreelancer className="shrink-0 text-2xl" />
+                                <FaUserDoctor className="shrink-0 text-2xl" />
                             </div>
                         </div>
                     </div>
                     <div className="border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
                         <div className="text-xs font-semibold pb-2 text-gray_v w-full">
-                            Companies:
+                            Instututions:
                         </div>
                         <div className="flex justify-between gap-2 mx-2 w-full">
                             <div className="font-semibold text-2xl">
                                 {data?.Company_nbr}
                             </div>
                             <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
-                                <FaUserTie className="shrink-0 text-2xl" />
+                                <FaRegBuilding className="shrink-0 text-2xl" />
                             </div>
                         </div>
                     </div>
