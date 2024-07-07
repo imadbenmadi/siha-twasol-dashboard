@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { LiaUsersSolid } from "react-icons/lia";
-import { SiFreelancer } from "react-icons/si";
-import { MdOutlineWork } from "react-icons/md";
 import { FaUserDoctor } from "react-icons/fa6";
 import { FaRegBuilding } from "react-icons/fa";
 
-import { FaUserTie } from "react-icons/fa6";
 import {
     Chart as ChartJS,
     CategoryScale,
