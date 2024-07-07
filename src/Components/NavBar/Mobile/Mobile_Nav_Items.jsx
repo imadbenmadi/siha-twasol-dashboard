@@ -125,7 +125,7 @@ function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
                         </div>
                     </div>
 
-                    <div>
+                    {/* <div>
                         <div className=" font-semibold pb-4 flex items-center gap-2">
                             <PiListFill className=" text-lg" />
                             Terms
@@ -143,7 +143,7 @@ function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
                                 <span>Terms of service</span>
                             </Link>
                         </div>
-                    </div>
+                    </div> */}
                     <div>
                         <div className=" font-semibold pb-4 flex items-center gap-2">
                             <RiContactsLine className=" text-lg" />

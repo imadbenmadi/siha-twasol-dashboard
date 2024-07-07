@@ -115,7 +115,7 @@ function Laptop() {
                 </div>
             </div>
 
-            <div>
+            {/* <div>
                 <div className=" font-semibold pb-4  flex gap-2 items-center ">
                     <PiListFill className=" text-lg" />
                     Terms
@@ -132,7 +132,7 @@ function Laptop() {
                         <span>Terms of service</span>
                     </Link>
                 </div>
-            </div>
+            </div> */}
             <div>
                 <div className=" font-semibold pb-4  flex gap-2 items-center ">
                     <RiContactsLine className=" text-lg" />
