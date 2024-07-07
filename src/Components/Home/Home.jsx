@@ -141,7 +141,7 @@ function Home() {
                     backgroundColor: "rgba(53, 162, 235, 0.5)",
                 },
                 {
-                    label: "Instututions",
+                    label: "institutions",
                     data: companiesData,
                     borderColor: "rgb(60, 100, 235)",
                     backgroundColor: "rgba(60, 100, 235, 0.5)",
@@ -183,7 +183,7 @@ function Home() {
                     </div>
                     <div className="border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
                         <div className="text-xs font-semibold pb-2 text-gray_v w-full">
-                            Instututions:
+                            institutions:
                         </div>
                         <div className="flex justify-between gap-2 mx-2 w-full">
                             <div className="font-semibold text-2xl">
