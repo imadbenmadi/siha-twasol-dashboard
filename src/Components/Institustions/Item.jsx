@@ -4,12 +4,16 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+dayjs.extend(customParseFormat);
 function InstitutionItem() {
     const location = useLocation();
     const institution_id = location.pathname.split("/")[2];
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    // const [error, setError] = useState(null);
     const [institution, setInstitution] = useState(null);
 
     const [delete_loading, setDeleteLoading] = useState(false);
@@ -34,7 +38,7 @@ function InstitutionItem() {
                 Swal.fire("Error", "You should login again", "error");
                 navigate("/Login");
             } else {
-                Swal.fire("Error", error.message, "error");
+                Swal.fire("Error", response.data.message, "error");
             }
         } catch (error) {
             Swal.fire("Error", error.message, "error");
@@ -61,10 +65,12 @@ function InstitutionItem() {
                     Swal.fire("Error", "You should login again", "error");
                     navigate("/Login");
                 } else {
-                    setError(response.data);
+                    Swal.fire("Error", response.data.message, "error");
+                    navigate("/Institustions");
                 }
             } catch (error) {
-                setError(error);
+                Swal.fire("Error", error.message, "error");
+                navigate("/Institustions");
             } finally {
                 setLoading(false);
             }
@@ -86,15 +92,15 @@ function InstitutionItem() {
         );
     }
 
-    if (error) {
-        return (
-            <div className="w-screen h-[80vh] flex items-center justify-center">
-                <div className="text-red-600 font-semibold">
-                    {error.message}
-                </div>
-            </div>
-        );
-    }
+    // if (error) {
+    //     return (
+    //         <div className="w-screen h-[80vh] flex items-center justify-center">
+    //             <div className="text-red-600 font-semibold">
+    //                 {error.message}
+    //             </div>
+    //         </div>
+    //     );
+    // }
 
     if (!institution) {
         return null;
@@ -184,43 +190,48 @@ function InstitutionItem() {
             )}
             <div className=" mt-12">
                 <h2 className="text-2xl font-semibold mb-2">Doctors</h2>
-                {institution.Medecins.length === 0 ? (
+                {institution.Directors.length === 0 ? (
                     <p className="text-gray_v text-center font-semibold pt-6">
                         No doctors found
                     </p>
                 ) : (
                     <table className="table-auto w-full text-sm">
                         <thead>
-                            <tr className="bg-gray_white font-normal">
-                                <th className="px-4 border py-2  rounded-tl-lg">
-                                    Name
+                            <tr className="bg-gray_white text-black font-normal">
+                                <th className="px-4 border border-white py-2  rounded-tl-lg">
+                                    Email
                                 </th>
-                                <th className="px-4 border py-2">Wilaya</th>
-                                <th className="px-4 border py-2">
+                                <th className="px-4 border border-white py-2">
+                                    Created At
+                                </th>
+                                {/* <th className="px-4 border py-2">
                                     Localisation
-                                </th>
-                                <th className="px-4 border py-2 rounded-tr-lg">
+                                </th> */}
+                                {/* <th className="px-4 border border-white py-2 rounded-tr-lg">
                                     Doctor Profile
-                                </th>
+                                </th> */}
                             </tr>
                         </thead>
                         <tbody className="text-center font-semibold">
-                            {institution.Medecins.map((doctor, index) => (
+                            {institution.Directors.map((doctor, index) => (
                                 <tr key={index}>
                                     <td className="border px-4 py-2">
-                                        {doctor.name}
+                                        {doctor.email}
                                     </td>
                                     <td className="border px-4 py-2">
-                                        {doctor.wilaya}
+                                        {/* {doctor.CreatedAt} */}
+                                        {dayjs(doctor?.createdAt).format(
+                                            "DD MMMM YYYY"
+                                        )}
                                     </td>
-                                    <td className="border px-4 py-2">
+                                    {/* <td className="border px-4 py-2">
                                         {doctor.localisation}
-                                    </td>
-                                    <td className="border px-4 py-2">
+                                    </td> */}
+                                    {/* <td className="border px-4 py-2">
                                         <button className="bg-blue_v text-white px-4 py-2 rounded">
                                             See Profile
                                         </button>
-                                    </td>
+                                    </td> */}
                                 </tr>
                             ))}
                         </tbody>
