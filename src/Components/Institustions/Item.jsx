@@ -12,6 +12,37 @@ function InstitutionItem() {
     const [error, setError] = useState(null);
     const [institution, setInstitution] = useState(null);
 
+    const [delete_loading, setDeleteLoading] = useState(false);
+    const handle_delete_institution = async () => {
+        setDeleteLoading(true);
+        try {
+            const response = await axios.delete(
+                `http://localhost:3000/Admin/Companies/${institution_id}`,
+                {
+                    withCredentials: true,
+                    validateStatus: () => true,
+                }
+            );
+            if (response.status === 200) {
+                Swal.fire(
+                    "Success",
+                    "Institution deleted successfully",
+                    "success"
+                );
+                navigate("/Institustions");
+            } else if (response.status === 401) {
+                Swal.fire("Error", "You should login again", "error");
+                navigate("/Login");
+            } else {
+                Swal.fire("Error", error.message, "error");
+            }
+        } catch (error) {
+            Swal.fire("Error", error.message, "error");
+        } finally {
+            setDeleteLoading(false);
+        }
+    };
+
     useEffect(() => {
         setLoading(true);
         const fetchInstitution = async () => {
@@ -113,12 +144,17 @@ function InstitutionItem() {
                     >
                         Edite Institustion
                     </Link>
-                    <div
-                        className=" bg-red-500 cursor-pointer
-                     text-white font-semibold px-4 py-2 rounded-md"
-                    >
-                        Delete Institustion
-                    </div>
+                    {delete_loading ? (
+                        <span className="small-loader mt-2 w-full m-auto"></span>
+                    ) : (
+                        <div
+                            className=" bg-red-500 cursor-pointer
+                                     text-white font-semibold px-4 py-2 rounded-md"
+                            onClick={handle_delete_institution}
+                        >
+                            Delete Institustion
+                        </div>
+                    )}
                 </div>
             </div>
             {director && (
