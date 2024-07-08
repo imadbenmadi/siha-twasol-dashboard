@@ -38,7 +38,12 @@ function InstitutionItem() {
                 setLoading(false);
             }
         };
-
+        if (
+            !institution_id ||
+            isNaN(institution_id) ||
+            !Number.isInteger(Number(institution_id))
+        )
+            navigate("/Institustions");
         fetchInstitution();
     }, [institution_id, navigate]);
 
@@ -68,7 +73,7 @@ function InstitutionItem() {
         institution.Directors.length > 0 ? institution.Directors[0] : null;
 
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className=" mx-auto px-4 py-8 text-black_text">
             <div className="flex flex-wrap sm:justify-between justify-center gap-8  sm:gap-24 mb-12">
                 <div className=" flex flex-col gap-3 text-black_text">
                     <h1 className="text-3xl font-bold">{institution.Name}</h1>
@@ -119,14 +124,24 @@ function InstitutionItem() {
             {director && (
                 <div className="mb-6">
                     <h2 className="text-2xl font-semibold mb-2">Director</h2>
-                    <div className="flex flex-wrap gap-4">
+                    <div className="flex flex-col md:flex-row items-center gap-4">
                         <div className="border p-2 rounded-md flex items-center justify-between gap-2 text-sm font-semibold min-w-[300px]">
                             <span>Email: {director.email}</span>
-                            <button className="text-blue_v">✏️</button>
+                            <Link
+                                to={`/Institustions/${institution_id}/Edit`}
+                                className="text-blue_v"
+                            >
+                                ✏️
+                            </Link>
                         </div>
                         <div className="border p-2 rounded-md flex items-center justify-between gap-2 text-sm font-semibold min-w-[300px]">
                             <span>Password: {director.password}</span>
-                            <button className="text-blue_v">✏️</button>
+                            <Link
+                                to={`/Institustions/${institution_id}/Edit`}
+                                className="text-blue_v"
+                            >
+                                ✏️
+                            </Link>
                         </div>
                     </div>
                 </div>
