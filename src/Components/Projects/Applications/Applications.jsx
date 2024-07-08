@@ -92,7 +92,7 @@ function Applications() {
                                             ? projects.length
                                             : 0}
                                     </div>
-                                    <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
+                                    <div className="shrink-0 text-blue_v border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
                                         <SiFreelancer className="shrink-0 text-2xl" />
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@ function Applications() {
                                         )}
                                         {/* {projects.length} */}
                                     </div>
-                                    <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
+                                    <div className="shrink-0 text-blue_v border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
                                         <SiFreelancer className="shrink-0 text-2xl" />
                                     </div>
                                 </div>
@@ -159,7 +159,7 @@ function Applications() {
                                                         `/Projects_Applications/${project?.id}`
                                                     );
                                                 }}
-                                                className="bg-blue-500 text-white px-4 py-2 rounded"
+                                                className="bg-blue_v text-white px-4 py-2 rounded"
                                             >
                                                 View
                                             </button>

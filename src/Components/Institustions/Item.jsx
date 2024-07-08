@@ -76,7 +76,7 @@ function InstitutionItem() {
                         {institution.Wilaya}/{institution.Location}
                     </p>
                 </div>
-                <button className="bg-blue-500 text-white px-4 py-2 rounded">
+                <button className="bg-blue_v text-white px-4 py-2 rounded">
                     See events
                 </button>
             </div>
@@ -86,11 +86,11 @@ function InstitutionItem() {
                     <div className="flex gap-4">
                         <div className="border p-2 rounded-md flex items-center justify-between gap-2 text-sm font-semibold min-w-[300px]">
                             <span>Email: {director.email}</span>
-                            <button className="text-blue-500">✏️</button>
+                            <button className="text-blue_v">✏️</button>
                         </div>
                         <div className="border p-2 rounded-md flex items-center justify-between gap-2 text-sm font-semibold min-w-[300px]">
                             <span>Password: {director.password}</span>
-                            <button className="text-blue-500">✏️</button>
+                            <button className="text-blue_v">✏️</button>
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@ function InstitutionItem() {
                                     {doctor.localisation}
                                 </td>
                                 <td className="border px-4 py-2">
-                                    <button className="bg-blue-500 text-white px-4 py-2 rounded">
+                                    <button className="bg-blue_v text-white px-4 py-2 rounded">
                                         See Profile
                                     </button>
                                 </td>

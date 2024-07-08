@@ -163,7 +163,7 @@ function Home() {
                             <div className="font-semibold text-2xl">
                                 {data?.Malad_nbr}
                             </div>
-                            <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
+                            <div className="shrink-0 text-blue_v border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
                                 <LiaUsersSolid className="shrink-0 text-2xl" />
                             </div>
                         </div>
@@ -176,7 +176,7 @@ function Home() {
                             <div className="font-semibold text-2xl">
                                 {data?.Medecin_nbr}
                             </div>
-                            <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
+                            <div className="shrink-0 text-blue_v border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
                                 <FaUserDoctor className="shrink-0 text-2xl" />
                             </div>
                         </div>
@@ -189,7 +189,7 @@ function Home() {
                             <div className="font-semibold text-2xl">
                                 {data?.Company_nbr}
                             </div>
-                            <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
+                            <div className="shrink-0 text-blue_v border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
                                 <FaRegBuilding className="shrink-0 text-2xl" />
                             </div>
                         </div>

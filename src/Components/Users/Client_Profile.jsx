@@ -243,7 +243,7 @@ function PersonalInformations({ user }) {
                         <div className=" flex gap-6">
                             {user?.facebook_Link && (
                                 <FaFacebook
-                                    className=" text-blue-500 text-5xl cursor-pointer  "
+                                    className=" text-blue_v text-5xl cursor-pointer  "
                                     onClick={() => {
                                         window.location.href =
                                             user.facebook_Link;
@@ -261,7 +261,7 @@ function PersonalInformations({ user }) {
                             )}
                             {user?.linkedIn_Link && (
                                 <FaLinkedin
-                                    className=" text-blue-500 text-5xl cursor-pointer  "
+                                    className=" text-blue_v text-5xl cursor-pointer  "
                                     onClick={() => {
                                         window.location.href =
                                             user.linkedin_Link;

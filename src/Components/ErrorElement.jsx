@@ -22,7 +22,7 @@ function ErrorElement({ error }) {
                 )}
                 <p className="text-lg">
                     Please go back to the{" "}
-                    <a className="text-blue-600 hover:underline" href="/">
+                    <a className="text-blue_v hover:underline" href="/">
                         home page
                     </a>
                     .

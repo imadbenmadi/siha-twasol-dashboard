@@ -82,7 +82,7 @@ function Contact() {
                                     <div className="  font-semibold text-2xl">
                                         {Messages.length}
                                     </div>
-                                    <div className=" shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
+                                    <div className=" shrink-0 text-blue_v border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
                                         <BiMessage className=" shrink-0 text-2xl" />
                                     </div>
                                 </div>
