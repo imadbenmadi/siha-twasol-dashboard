@@ -58,7 +58,7 @@ function InstitutionItem() {
                         validateStatus: () => true,
                     }
                 );
-
+                console.log(response.data);
                 if (response.status === 200) {
                     setInstitution(response.data.company);
                 } else if (response.status === 401) {
@@ -95,7 +95,6 @@ function InstitutionItem() {
     if (!institution) {
         navigate("/Institustions");
     }
-
     const director =
         institution?.Directors.length > 0 ? institution?.Directors[0] : null;
 
@@ -103,7 +102,7 @@ function InstitutionItem() {
         <div className=" mx-auto px-4 py-8 text-black_text">
             <div className="flex flex-wrap sm:justify-between justify-center gap-8  sm:gap-24 mb-12">
                 <div className=" flex flex-col gap-3 text-black_text">
-                    <h1 className="text-3xl font-bold">{institution.Name}</h1>
+                    <h1 className="text-3xl font-bold">{institution?.Name}</h1>
                     <div className=" md:pl-6 flex flex-col gap-2">
                         <p className="text-lg text-gray_v">
                             Wilaya :{" "}
@@ -228,7 +227,7 @@ function InstitutionItem() {
             )}
             <div className=" mt-12">
                 <h2 className="text-2xl font-semibold mb-2">Doctors</h2>
-                {institution.Medecins.length === 0 ? (
+                {institution?.Medecins.length === 0 ? (
                     <p className="text-gray_v text-center font-semibold pt-6">
                         No doctors found
                     </p>

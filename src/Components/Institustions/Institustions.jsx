@@ -49,17 +49,17 @@ function Institutions() {
             const name = institution?.Name || "";
             return (
                 name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                institution.Location.toLowerCase().includes(
+                institution?.Location.toLowerCase().includes(
                     searchQuery.toLowerCase()
                 ) ||
-                institution.Wilaya.toLowerCase().includes(
+                institution?.Wilaya.toLowerCase().includes(
                     searchQuery.toLowerCase()
                 )
             );
         })
         .filter((institution) => {
             if (institutionTypeFilter) {
-                return institution.Type === institutionTypeFilter;
+                return institution?.Type === institutionTypeFilter;
             }
             return true;
         });

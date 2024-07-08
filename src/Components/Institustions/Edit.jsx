@@ -1,10 +1,19 @@
+// import React from "react";
+
+// function Edit() {
+//     return <div>Edit</div>;
+// }
+
+// export default Edit;
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
@@ -15,6 +24,7 @@ const edit_institution = () => {
     const [loading, setLoading] = useState(false);
     // const [error, setError] = useState(null);
     const [institution, setInstitution] = useState(null);
+    const [edit_loading, setEditLoading] = useState(false);
 
     useEffect(() => {
         setLoading(true);
@@ -27,7 +37,7 @@ const edit_institution = () => {
                         validateStatus: () => true,
                     }
                 );
-
+                console.log(response.data);
                 if (response.status === 200) {
                     setInstitution(response.data.company);
                 } else if (response.status === 401) {
@@ -68,12 +78,12 @@ const edit_institution = () => {
             </div>
             <Formik
                 initialValues={{
-                    name: "",
-                    localisation: "",
-                    wilaya: "",
-                    type: "",
-                    email: "",
-                    password: "",
+                    name: institution?.Name || "",
+                    localisation: institution?.Location || "",
+                    wilaya: institution?.Wilaya || "",
+                    type: institution?.Type || "",
+                    email: institution?.Directors[0]?.email || "",
+                    password: institution?.Directors[0]?.password || "",
                 }}
                 validationSchema={Yup.object({
                     name: Yup.string().required("Required"),
@@ -89,9 +99,9 @@ const edit_institution = () => {
                 })}
                 onSubmit={async (values, { setSubmitting }) => {
                     try {
-                        setLoading(true);
-                        const response = await axios.post(
-                            "http://localhost:3000/Admin/Companies",
+                        setEditLoading(true);
+                        const response = await axios.put(
+                            `http://localhost:3000/Admin/Companies/${institution_id}`,
                             {
                                 Name: values?.name,
                                 Location: values?.localisation,
@@ -124,7 +134,7 @@ const edit_institution = () => {
                         Swal.fire("Error", "An error occurred", "error");
                     } finally {
                         setSubmitting(false);
-                        setLoading(false);
+                        setEditLoading(false);
                     }
                 }}
             >
@@ -258,7 +268,7 @@ const edit_institution = () => {
                             />
                         </div>
                     </div>
-                    {loading ? (
+                    {edit_loading ? (
                         <div className="md:col-span-2 mt-3 mx-auto">
                             <span className="loader"></span>
                         </div>
@@ -268,7 +278,7 @@ const edit_institution = () => {
                                 type="submit"
                                 className="px-6 bg-blue_v font-bold w-fit text-white py-2 rounded-md"
                             >
-                                Complete
+                                Edit
                             </button>
                         </div>
                     )}
