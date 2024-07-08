@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 
 const New_institution = () => {
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     return (
         <div className="container mx-auto py-6 px-4">
@@ -18,6 +19,7 @@ const New_institution = () => {
                     name: "",
                     localisation: "",
                     wilaya: "",
+                    type: "",
                     email: "",
                     password: "",
                 }}
@@ -25,6 +27,7 @@ const New_institution = () => {
                     name: Yup.string().required("Required"),
                     localisation: Yup.string().required("Required"),
                     wilaya: Yup.string().required("Required"),
+                    type: Yup.string().required("Required"),
                     email: Yup.string()
                         .email("Invalid email address")
                         .required("Required"),
@@ -34,21 +37,30 @@ const New_institution = () => {
                 })}
                 onSubmit={async (values, { setSubmitting }) => {
                     try {
+                        setLoading(true);
                         const response = await axios.post(
-                            "http://localhost:3000/Admin/Institutions",
-                            values,
+                            "http://localhost:3000/Admin/Companies",
+                            {
+                                Name: values.name,
+                                Location: values.localisation,
+                                Wilaya: values.wilaya,
+                                Type: values.type,
+                                director_email: values.email,
+                                director_password: values.password,
+                            },
                             {
                                 withCredentials: true,
                                 validateStatus: () => true,
                             }
                         );
-                        if (response.status === 201) {
+                        console.log(response.data);
+                        if (response.status === 200) {
                             Swal.fire(
                                 "Success",
                                 "Institution added successfully",
                                 "success"
                             );
-                            navigate("/Institutions");
+                            navigate("/Institustions");
                         } else {
                             Swal.fire(
                                 "Error",
@@ -60,6 +72,7 @@ const New_institution = () => {
                         Swal.fire("Error", "An error occurred", "error");
                     } finally {
                         setSubmitting(false);
+                        setLoading(false);
                     }
                 }}
             >
@@ -103,7 +116,7 @@ const New_institution = () => {
                             />
                         </div>
 
-                        <div>
+                        <div className=" mb-4">
                             <label
                                 htmlFor="wilaya"
                                 className="block text-md font-medium text-black_text"
@@ -121,6 +134,37 @@ const New_institution = () => {
                                 className="text-red-500 text-sm"
                             />
                         </div>
+
+                        <div className=" mb-4">
+                            <label
+                                htmlFor="type"
+                                className="block text-md font-medium text-black_text"
+                            >
+                                Institution Type
+                            </label>
+                            <Field
+                                name="type"
+                                as="select"
+                                className="mt-1 block w-full border rounded-md px-4 py-2"
+                            >
+                                <option value="">Select Type</option>
+                                <option value="CHU">CHU</option>
+                                <option value="EPH">EPH</option>
+                                <option value="EHS">EHS</option>
+                                <option value="EHU">EHU</option>
+                                <option value="EPSP">EPSP</option>
+                                <option value="CS">CS</option>
+                                <option value="POLYCLINIQUE">
+                                    POLYCLINIQUE
+                                </option>
+                                <option value="EHP">EHP</option>
+                            </Field>
+                            <ErrorMessage
+                                name="type"
+                                component="div"
+                                className="text-red-500 text-sm"
+                            />
+                        </div>
                     </div>
 
                     <div>
@@ -129,7 +173,7 @@ const New_institution = () => {
                                 htmlFor="email"
                                 className="block text-md font-medium text-black_text"
                             >
-                                Email
+                                Director Email
                             </label>
                             <Field
                                 name="email"
@@ -148,7 +192,7 @@ const New_institution = () => {
                                 htmlFor="password"
                                 className="block text-md font-medium text-black_text"
                             >
-                                Password
+                                Director Password
                             </label>
                             <Field
                                 name="password"
@@ -162,15 +206,20 @@ const New_institution = () => {
                             />
                         </div>
                     </div>
-
-                    <div className="md:col-span-2  mx-auto">
-                        <button
-                            type="submit"
-                            className="px-6 bg-blue_v font-bold w-fit text-white py-2 rounded-md"
-                        >
-                            Complete
-                        </button>
-                    </div>
+                    {loading ? (
+                        <div className="md:col-span-2 mt-3 mx-auto">
+                            <span className="loader"></span>
+                        </div>
+                    ) : (
+                        <div className="md:col-span-2  mx-auto">
+                            <button
+                                type="submit"
+                                className="px-6 bg-blue_v font-bold w-fit text-white py-2 rounded-md"
+                            >
+                                Complete
+                            </button>
+                        </div>
+                    )}
                 </Form>
             </Formik>
         </div>

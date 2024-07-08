@@ -112,7 +112,6 @@ function Institutions() {
                         <option value="CS">CS</option>
                         <option value="POLYCLINIQUE">POLYCLINIQUE</option>
                         <option value="EHP">EHP</option>
-                        {/* Add other institution types as options here */}
                     </select>
                 </div>
                 {filteredInstitutions.length === 0 ? (
