@@ -65,11 +65,11 @@ function InstitutionItem() {
                     Swal.fire("Error", "You should login again", "error");
                     navigate("/Login");
                 } else {
-                    Swal.fire("Error", response.data.message, "error");
+                    // Swal.fire("Error", response.data.message, "error");
                     navigate("/Institustions");
                 }
             } catch (error) {
-                Swal.fire("Error", error.message, "error");
+                // Swal.fire("Error", error.message, "error");
                 navigate("/Institustions");
             } finally {
                 setLoading(false);
@@ -190,7 +190,7 @@ function InstitutionItem() {
             )}
             <div className=" mt-12">
                 <h2 className="text-2xl font-semibold mb-2">Doctors</h2>
-                {institution.Directors.length === 0 ? (
+                {institution.Medecins.length === 0 ? (
                     <p className="text-gray_v text-center font-semibold pt-6">
                         No doctors found
                     </p>
@@ -199,41 +199,51 @@ function InstitutionItem() {
                         <thead>
                             <tr className="bg-gray_white text-black font-normal">
                                 <th className="px-4 border border-white py-2  rounded-tl-lg">
+                                    Full Name
+                                </th>
+                                <th className="px-4 border border-white py-2  rounded-tl-lg">
+                                    telephone
+                                </th>
+                                <th className="px-4 border border-white py-2  rounded-tl-lg">
                                     Email
+                                </th>{" "}
+                                <th className="px-4 border border-white py-2  rounded-tl-lg">
+                                    speciality
                                 </th>
                                 <th className="px-4 border border-white py-2">
                                     Created At
                                 </th>
-                                {/* <th className="px-4 border py-2">
-                                    Localisation
-                                </th> */}
-                                {/* <th className="px-4 border border-white py-2 rounded-tr-lg">
-                                    Doctor Profile
-                                </th> */}
                             </tr>
                         </thead>
                         <tbody className="text-center font-semibold">
-                            {institution.Directors.map((doctor, index) => (
-                                <tr key={index}>
-                                    <td className="border px-4 py-2">
-                                        {doctor.email}
-                                    </td>
-                                    <td className="border px-4 py-2">
-                                        {/* {doctor.CreatedAt} */}
-                                        {dayjs(doctor?.createdAt).format(
-                                            "DD MMMM YYYY"
-                                        )}
-                                    </td>
-                                    {/* <td className="border px-4 py-2">
-                                        {doctor.localisation}
-                                    </td> */}
-                                    {/* <td className="border px-4 py-2">
-                                        <button className="bg-blue_v text-white px-4 py-2 rounded">
-                                            See Profile
-                                        </button>
-                                    </td> */}
-                                </tr>
-                            ))}
+                            {institution.Medecins.map(
+                                (doctor, index) => (
+                                    console.log(doctor),
+                                    (
+                                        <tr key={index}>
+                                            <td className="border px-4 py-2">
+                                                {doctor?.firstName}{" "}
+                                                {doctor?.lastName}
+                                            </td>
+                                            <td className="border px-4 py-2">
+                                                {doctor?.telephone}
+                                            </td>
+                                            <td className="border px-4 py-2">
+                                                {doctor?.email}
+                                            </td>
+                                            <td className="border px-4 py-2">
+                                                {doctor?.speciality}
+                                            </td>
+                                            <td className="border px-4 py-2">
+                                                {/* {doctor?.CreatedAt} */}
+                                                {dayjs(
+                                                    doctor?.createdAt
+                                                ).format("DD MMMM YYYY")}
+                                            </td>
+                                        </tr>
+                                    )
+                                )
+                            )}
                         </tbody>
                     </table>
                 )}
