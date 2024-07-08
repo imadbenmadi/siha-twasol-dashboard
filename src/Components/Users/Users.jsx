@@ -175,7 +175,7 @@ function Users() {
                                             }}
                                             className="bg-blue_v text-white px-4 py-2 rounded"
                                         >
-                                            View Profile
+                                            View 
                                         </button>
                                     </td>
                                 </tr>
