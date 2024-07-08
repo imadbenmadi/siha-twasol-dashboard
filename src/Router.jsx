@@ -9,6 +9,8 @@ import Users from "./Components/Users/Users";
 
 import Institustions from "./Components/Institustions/Institustions.jsx";
 import Institustions_item from "./Components/Institustions/Item.jsx";
+import Institustions_events from "./Components/Institustions/Events.jsx";
+import Institustions_Edit from "./Components/Institustions/Edit.jsx";
 import New_institution from "./Components/Institustions/New_institution.jsx";
 
 import Terms from "./Components/Terms/Terms.jsx";
@@ -46,6 +48,16 @@ const routes = createBrowserRouter([
             {
                 path: "/Institustions/:id",
                 element: <Institustions_item />,
+                errorElement: <ErrorElement />,
+            },
+            {
+                path: "/Institustions/:id/Edit",
+                element: <Institustions_Edit />,
+                errorElement: <ErrorElement />,
+            },
+            {
+                path: "/Institustions/:id/Events",
+                element: <Institustions_events />,
                 errorElement: <ErrorElement />,
             },
             {
