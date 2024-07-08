@@ -41,12 +41,12 @@ const New_institution = () => {
                         const response = await axios.post(
                             "http://localhost:3000/Admin/Companies",
                             {
-                                Name: values.name,
-                                Location: values.localisation,
-                                Wilaya: values.wilaya,
-                                Type: values.type,
-                                director_email: values.email,
-                                director_password: values.password,
+                                Name: values?.name,
+                                Location: values?.localisation,
+                                Wilaya: values?.wilaya,
+                                Type: values?.type,
+                                director_email: values?.email,
+                                director_password: values?.password,
                             },
                             {
                                 withCredentials: true,

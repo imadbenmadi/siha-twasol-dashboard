@@ -97,7 +97,7 @@ function Home() {
         const processData = (items) => {
             const countByDate = {};
             items.forEach((item) => {
-                const date = dayjs(item.createdAt).format("YYYY-MM-DD");
+                const date = dayjs(item?.createdAt).format("YYYY-MM-DD");
                 if (!countByDate[date]) {
                     countByDate[date] = 0;
                 }

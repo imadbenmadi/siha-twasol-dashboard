@@ -49,7 +49,7 @@ function Card({ Message, Messages, setMessages }) {
     return (
         // <div></div>
         <div
-            key={Message.id}
+            key={Message?.id}
             className="flex flex-col md;flex-row justify-between py-4 px-7  border-2 
                          border-blue_v rounded-lg  mt-6 text-gray_v"
         >

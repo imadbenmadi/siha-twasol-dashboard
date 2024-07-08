@@ -67,7 +67,7 @@ function Contact() {
                     Contact Messages
                 </div>
 
-                {!Messages || Messages.length == 0 ? (
+                {!Messages || Messages?.length == 0 ? (
                     <div className="text-md font-semibold text-gray_v text-center pt-12">
                         No Messages
                     </div>
@@ -80,7 +80,7 @@ function Contact() {
                                 </div>
                                 <div className=" flex justify-between gap-2 mx-2 w-full">
                                     <div className="  font-semibold text-2xl">
-                                        {Messages.length}
+                                        {Messages?.length}
                                     </div>
                                     <div className=" shrink-0 text-blue_v border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
                                         <BiMessage className=" shrink-0 text-2xl" />
@@ -90,7 +90,7 @@ function Contact() {
                         </div>
 
                         {Messages &&
-                            Messages.map((message) => {
+                            Messages?.map((message) => {
                                 return (
                                     <Card
                                         key={message.id}

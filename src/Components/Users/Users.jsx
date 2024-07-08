@@ -46,7 +46,8 @@ function Users() {
 
     const filteredUsers = users
         .filter((user) => {
-            const fullName = `${user.firstName} ${user.lastName}`.toLowerCase();
+            const fullName =
+                `${user?.firstName} ${user?.lastName}`.toLowerCase();
             return (
                 fullName.includes(searchQuery.toLowerCase()) ||
                 user.email.toLowerCase().includes(searchQuery.toLowerCase())
@@ -100,7 +101,7 @@ function Users() {
                         <option value="worker">workers</option>
                     </select>
                 </div>
-                {filteredUsers.length === 0 ? (
+                {filteredUsers?.length === 0 ? (
                     <div className="text-center font-semibold text-sm text-gray_v pt-12">
                         No users found
                     </div>
@@ -129,21 +130,21 @@ function Users() {
                             </tr>
                         </thead>
                         <tbody className="text-xs text-center font-semibold">
-                            {filteredUsers.map((user) => (
-                                <tr key={user.id}>
+                            {filteredUsers?.map((user) => (
+                                <tr key={user?.id}>
                                     <td className="border px-4 py-2">{`${user.firstName} ${user.lastName}`}</td>
                                     <td className="border px-4 py-2">
-                                        {user.email}
+                                        {user?.email}
                                     </td>
                                     <td className="border px-4 py-2">
-                                        {user.telephone}
+                                        {user?.telephone}
                                     </td>
                                     <td className="border px-4 py-2">
-                                        {user.userType === "malad" ? (
+                                        {user?.userType === "malad" ? (
                                             "Malad"
-                                        ) : user.userType === "medecin" ? (
+                                        ) : user?.userType === "medecin" ? (
                                             "medecin"
-                                        ) : user.userType === "worker" ? (
+                                        ) : user?.userType === "worker" ? (
                                             "Worker"
                                         ) : (
                                             <span className=" text-red-500">
@@ -152,7 +153,6 @@ function Users() {
                                         )}
                                     </td>
                                     <td className="border px-4 py-2">
-                                        
                                         {dayjs(user?.createdAt).format(
                                             "DD MMMM YYYY"
                                         )}

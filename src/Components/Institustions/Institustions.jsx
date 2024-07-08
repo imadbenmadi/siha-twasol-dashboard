@@ -46,7 +46,7 @@ function Institutions() {
 
     const filteredInstitutions = institutions
         .filter((institution) => {
-            const name = institution.Name || "";
+            const name = institution?.Name || "";
             return (
                 name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 institution.Location.toLowerCase().includes(
@@ -114,7 +114,7 @@ function Institutions() {
                         <option value="EHP">EHP</option>
                     </select>
                 </div>
-                {filteredInstitutions.length === 0 ? (
+                {filteredInstitutions?.length === 0 ? (
                     <div className="text-center font-semibold text-sm text-gray_v pt-12">
                         No institutions found
                     </div>
@@ -142,25 +142,25 @@ function Institutions() {
                         </thead>
                         <tbody className="text-xs text-center font-semibold">
                             {filteredInstitutions.map((institution) => (
-                                <tr key={institution.id}>
+                                <tr key={institution?.id}>
                                     <td className="border px-4 py-2">
-                                        {institution.Name}
+                                        {institution?.Name}
                                     </td>
                                     <td className="border px-4 py-2">
-                                        {institution.Location}
+                                        {institution?.Location}
                                     </td>
                                     <td className="border px-4 py-2">
-                                        {institution.Wilaya}
+                                        {institution?.Wilaya}
                                     </td>
                                     <td className="border px-4 py-2">
-                                        {institution.Type}
+                                        {institution?.Type}
                                     </td>
 
                                     <td className="border px-4 py-2">
                                         <button
                                             onClick={() => {
                                                 navigate(
-                                                    `/Institustions/${institution.id}`
+                                                    `/Institustions/${institution?.id}`
                                                 );
                                             }}
                                             className="bg-blue_v text-white px-4 py-2 rounded"

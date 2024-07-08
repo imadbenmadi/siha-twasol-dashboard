@@ -92,22 +92,12 @@ function InstitutionItem() {
         );
     }
 
-    // if (error) {
-    //     return (
-    //         <div className="w-screen h-[80vh] flex items-center justify-center">
-    //             <div className="text-red-600 font-semibold">
-    //                 {error.message}
-    //             </div>
-    //         </div>
-    //     );
-    // }
-
     if (!institution) {
-        return null;
+        navigate("/Institustions");
     }
 
     const director =
-        institution.Directors.length > 0 ? institution.Directors[0] : null;
+        institution?.Directors.length > 0 ? institution?.Directors[0] : null;
 
     return (
         <div className=" mx-auto px-4 py-8 text-black_text">
@@ -118,19 +108,19 @@ function InstitutionItem() {
                         <p className="text-lg text-gray_v">
                             Wilaya :{" "}
                             <span className="text-md font-semibold">
-                                {institution.Wilaya}
+                                {institution?.Wilaya}
                             </span>
                         </p>
                         <p className="text-lg text-gray_v">
                             Location :{" "}
                             <span className="text-md font-semibold">
-                                {institution.Location}
+                                {institution?.Location}
                             </span>
                         </p>
                         <p>
                             <span className="text-lg text-gray_v">Type :</span>{" "}
                             <span className="text-md font-semibold">
-                                {institution.Type}
+                                {institution?.Type}
                             </span>
                         </p>
                         <p>
@@ -139,7 +129,7 @@ function InstitutionItem() {
                             </span>{" "}
                             <span className="text-md font-semibold">
                                 {institution?.Medecins.length ? (
-                                    institution.Medecins.length
+                                    institution?.Medecins.length
                                 ) : (
                                     <span className="text-red-500">0</span>
                                 )}
@@ -151,7 +141,7 @@ function InstitutionItem() {
                             </span>{" "}
                             <span className="text-md font-semibold">
                                 {institution?.Services.length ? (
-                                    institution.Services.length
+                                    institution?.Services.length
                                 ) : (
                                     <span className="text-red-500">0</span>
                                 )}
@@ -163,7 +153,7 @@ function InstitutionItem() {
                             </span>{" "}
                             <span className="text-md font-semibold">
                                 {institution?.Workers.length ? (
-                                    institution.Workers.length
+                                    institution?.Workers.length
                                 ) : (
                                     <span className="text-red-500">0</span>
                                 )}
@@ -175,7 +165,7 @@ function InstitutionItem() {
                             </span>{" "}
                             <span className="text-md font-semibold">
                                 {institution?.malad_follows.length ? (
-                                    institution.malad_follows.length
+                                    institution?.malad_follows.length
                                 ) : (
                                     <span className="text-red-500">0</span>
                                 )}
@@ -184,12 +174,12 @@ function InstitutionItem() {
                     </div>
                 </div>
                 <div className=" flex flex-col gap-6 text-center">
-                    <Link
+                    {/* <Link
                         to={`/Institustions/${institution_id}/Events`}
                         className="border-2 border-blue_v text-blue_v font-semibold px-4 py-2 rounded-md"
                     >
                         See events
-                    </Link>
+                    </Link> */}
                     <Link
                         to={`/Institustions/${institution_id}/Edit`}
                         className="border-2 border-green_v text-green_v font-semibold
@@ -216,7 +206,7 @@ function InstitutionItem() {
                     <h2 className="text-2xl font-semibold mb-2">Director</h2>
                     <div className="flex flex-col md:flex-row items-center gap-4">
                         <div className="border p-2 rounded-md flex items-center justify-between gap-2 text-sm font-semibold min-w-[300px]">
-                            <span>Email: {director.email}</span>
+                            <span>Email: {director?.email}</span>
                             <Link
                                 to={`/Institustions/${institution_id}/Edit`}
                                 className="text-blue_v"
@@ -225,7 +215,7 @@ function InstitutionItem() {
                             </Link>
                         </div>
                         <div className="border p-2 rounded-md flex items-center justify-between gap-2 text-sm font-semibold min-w-[300px]">
-                            <span>Password: {director.password}</span>
+                            <span>Password: {director?.password}</span>
                             <Link
                                 to={`/Institustions/${institution_id}/Edit`}
                                 className="text-blue_v"
@@ -264,7 +254,7 @@ function InstitutionItem() {
                             </tr>
                         </thead>
                         <tbody className="text-center font-semibold">
-                            {institution.Medecins.map(
+                            {institution?.Medecins.map(
                                 (doctor, index) => (
                                     console.log(doctor),
                                     (
