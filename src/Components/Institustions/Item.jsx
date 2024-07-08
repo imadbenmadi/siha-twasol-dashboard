@@ -201,16 +201,16 @@ function InstitutionItem() {
                                 <th className="px-4 border border-white py-2  rounded-tl-lg">
                                     Full Name
                                 </th>
-                                <th className="px-4 border border-white py-2  rounded-tl-lg">
+                                <th className="px-4 border border-white py-2  ">
                                     telephone
                                 </th>
-                                <th className="px-4 border border-white py-2  rounded-tl-lg">
+                                <th className="px-4 border border-white py-2  ">
                                     Email
                                 </th>{" "}
-                                <th className="px-4 border border-white py-2  rounded-tl-lg">
+                                <th className="px-4 border border-white py-2  ">
                                     speciality
                                 </th>
-                                <th className="px-4 border border-white py-2">
+                                <th className="px-4 border border-white py-2 rounded-tr-lg">
                                     Created At
                                 </th>
                             </tr>
