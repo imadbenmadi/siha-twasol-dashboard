@@ -114,7 +114,7 @@ function InstitutionItem() {
             <div className="flex flex-wrap sm:justify-between justify-center gap-8  sm:gap-24 mb-12">
                 <div className=" flex flex-col gap-3 text-black_text">
                     <h1 className="text-3xl font-bold">{institution.Name}</h1>
-                    <div className=" pl-6 flex flex-col gap-2">
+                    <div className=" md:pl-6 flex flex-col gap-2">
                         <p className="text-lg text-gray_v">
                             Wilaya :{" "}
                             <span className="text-md font-semibold">
@@ -131,6 +131,54 @@ function InstitutionItem() {
                             <span className="text-lg text-gray_v">Type :</span>{" "}
                             <span className="text-md font-semibold">
                                 {institution.Type}
+                            </span>
+                        </p>
+                        <p>
+                            <span className="text-lg text-gray_v">
+                                Doctores :
+                            </span>{" "}
+                            <span className="text-md font-semibold">
+                                {institution?.Medecins.length ? (
+                                    institution.Medecins.length
+                                ) : (
+                                    <span className="text-red-500">0</span>
+                                )}
+                            </span>
+                        </p>
+                        <p>
+                            <span className="text-lg text-gray_v">
+                                Services :
+                            </span>{" "}
+                            <span className="text-md font-semibold">
+                                {institution?.Services.length ? (
+                                    institution.Services.length
+                                ) : (
+                                    <span className="text-red-500">0</span>
+                                )}
+                            </span>
+                        </p>
+                        <p>
+                            <span className="text-lg text-gray_v">
+                                Workers :
+                            </span>{" "}
+                            <span className="text-md font-semibold">
+                                {institution?.Workers.length ? (
+                                    institution.Workers.length
+                                ) : (
+                                    <span className="text-red-500">0</span>
+                                )}
+                            </span>
+                        </p>
+                        <p>
+                            <span className="text-lg text-gray_v">
+                                Followers :
+                            </span>{" "}
+                            <span className="text-md font-semibold">
+                                {institution?.malad_follows.length ? (
+                                    institution.malad_follows.length
+                                ) : (
+                                    <span className="text-red-500">0</span>
+                                )}
                             </span>
                         </p>
                     </div>
