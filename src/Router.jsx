@@ -11,18 +11,12 @@ import Institustions from "./Components/Institustions/Institustions.jsx";
 import Institustions_item from "./Components/Institustions/Item.jsx";
 import New_institution from "./Components/Institustions/New_institution.jsx";
 
-import Feedbacks_Clients from "./Components/Feedbacks/Clients_Freedbacks/Clients_Freedbacks.jsx";
-import Feedbacks_Freelancers from "./Components/Feedbacks/Freelancers_Feedbacks/Freelancers_Feedbacks.jsx";
-import Home_Feedbacks from "./Components/Feedbacks/Home_Feedbacks/Home_Feedbacks.jsx";
-
 import Terms from "./Components/Terms/Terms.jsx";
 
 import Contact from "./Components/Contact/Contact.jsx";
 import Not_Found from "./Components/Not_Found";
 import Not_Finished from "./Components/Not_Finished";
 import ErrorElement from "./Components/ErrorElement";
-import Client_Profile from "./Components/Users/Client_Profile.jsx";
-import Freelancer_Profile from "./Components/Users/Freelancer_Profile.jsx";
 const routes = createBrowserRouter([
     {
         path: "/",
@@ -43,16 +37,6 @@ const routes = createBrowserRouter([
                 element: <Users />,
                 errorElement: <ErrorElement />,
             },
-            {
-                path: "/Users/Clients/:userId",
-                element: <Client_Profile />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Users/Freelancers/:userId",
-                element: <Freelancer_Profile />,
-                errorElement: <ErrorElement />,
-            },
 
             {
                 path: "/Institustions",
@@ -70,27 +54,11 @@ const routes = createBrowserRouter([
                 errorElement: <ErrorElement />,
             },
 
-            {
-                path: "/Home_Feedbacks",
-                element: <Home_Feedbacks />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Feedbacks_Clients",
-                element: <Feedbacks_Clients />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Feedbacks_Freelancers",
-                element: <Feedbacks_Freelancers />,
-                errorElement: <ErrorElement />,
-            },
-
-            {
-                path: "/Terms",
-                element: <Terms />,
-                errorElement: <ErrorElement />,
-            },
+            // {
+            //     path: "/Terms",
+            //     element: <Terms />,
+            //     errorElement: <ErrorElement />,
+            // },
             {
                 path: "/Contact",
                 element: <Contact />,

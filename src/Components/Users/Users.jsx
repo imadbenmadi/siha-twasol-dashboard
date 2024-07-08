@@ -25,6 +25,7 @@ function Users() {
                         validateStatus: () => true,
                     }
                 );
+                console.log(response.data);
                 if (response.status === 200) {
                     setUsers(response.data.users);
                 } else if (response.status === 401) {
@@ -94,7 +95,7 @@ function Users() {
                         className="border p-2 w-fit mx-auto md:mx-0 rounded-md text-sm font-semibold"
                     >
                         <option value="">All Users</option>
-                        <option value="medicin">medicins</option>
+                        <option value="medecin">medecins</option>
                         <option value="malad">malads</option>
                         <option value="worker">workers</option>
                     </select>
@@ -122,9 +123,9 @@ function Users() {
                                 <th className="px-4 py-2 border-l border-white">
                                     Created At
                                 </th>
-                                <th className="px-4 py-2 border-l border-white rounded-tr-md">
+                                {/* <th className="px-4 py-2 border-l border-white rounded-tr-md">
                                     Action
-                                </th>
+                                </th> */}
                             </tr>
                         </thead>
                         <tbody className="text-xs text-center font-semibold">
@@ -140,8 +141,8 @@ function Users() {
                                     <td className="border px-4 py-2">
                                         {user.userType === "malad" ? (
                                             "Malad"
-                                        ) : user.userType === "medicin" ? (
-                                            "Medicin"
+                                        ) : user.userType === "medecin" ? (
+                                            "medecin"
                                         ) : user.userType === "worker" ? (
                                             "Worker"
                                         ) : (
@@ -151,14 +152,12 @@ function Users() {
                                         )}
                                     </td>
                                     <td className="border px-4 py-2">
-                                        {/* {new Date(
-                                            user.createdAt
-                                        ).toLocaleDateString()} */}
+                                        
                                         {dayjs(user?.createdAt).format(
                                             "DD MMMM YYYY"
                                         )}
                                     </td>
-                                    <td className="border px-4 py-2">
+                                    {/* <td className="border px-4 py-2">
                                         <button
                                             onClick={() => {
                                                 if (
@@ -177,7 +176,7 @@ function Users() {
                                         >
                                             View 
                                         </button>
-                                    </td>
+                                    </td> */}
                                 </tr>
                             ))}
                         </tbody>
