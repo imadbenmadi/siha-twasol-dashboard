@@ -69,7 +69,7 @@ function Applications() {
                     Projects Payment
                 </div>
                 {!projects || projects.length === 0 ? (
-                    <div className="text-center font-semibold text-sm text-gray-600 pt-6">
+                    <div className="text-center font-semibold text-sm text-gray_v pt-6">
                         No Payments found
                     </div>
                 ) : (
@@ -97,7 +97,7 @@ function Applications() {
                         </div>
                         <table className="table-auto w-full mt-4 text-sm">
                             <thead>
-                                <tr className="bg-gray-200 font-normal">
+                                <tr className="bg-gray_v font-normal">
                                     <th className="px-4 py-2 border-l border-white rounded-tl-md">
                                         Project Title
                                     </th>

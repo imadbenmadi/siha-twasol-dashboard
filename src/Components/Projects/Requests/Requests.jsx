@@ -67,7 +67,7 @@ function Requests() {
                     Projects Requests
                 </div>
                 {Projects.length === 0 ? (
-                    <div className="text-center font-semibold text-sm text-gray-600 pt-6">
+                    <div className="text-center font-semibold text-sm text-gray_v pt-6">
                         No Projects found
                     </div>
                 ) : (
@@ -89,7 +89,7 @@ function Requests() {
                         </div>
                         <table className="table-auto w-full mt-4 text-sm ">
                             <thead>
-                                <tr className="bg-gray-200 font-normal">
+                                <tr className="bg-gray_v font-normal">
                                     <th className="px-4 py-2 rounded-tl-md">
                                         Client Name
                                     </th>

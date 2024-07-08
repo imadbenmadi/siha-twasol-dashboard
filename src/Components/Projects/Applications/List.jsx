@@ -107,7 +107,7 @@ function List() {
                     Project Requirements & Applicants
                 </div>
                 {!Applicants || Applicants.length === 0 ? (
-                    <div className="text-center font-semibold text-sm text-gray-600 pt-6">
+                    <div className="text-center font-semibold text-sm text-gray_v pt-6">
                         No Applications found
                     </div>
                 ) : (

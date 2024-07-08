@@ -72,7 +72,7 @@ function InstitutionItem() {
             <div className="flex justify-between items-center mb-6">
                 <div>
                     <h1 className="text-3xl font-bold">{institution.Name}</h1>
-                    <p className="text-lg text-gray-600">
+                    <p className="text-lg text-gray_v">
                         {institution.Wilaya}/{institution.Location}
                     </p>
                 </div>
@@ -99,7 +99,7 @@ function InstitutionItem() {
                 <h2 className="text-2xl font-semibold mb-2">Doctors</h2>
                 <table className="table-auto w-full text-sm">
                     <thead>
-                        <tr className="bg-gray-200 font-normal">
+                        <tr className="bg-gray_v font-normal">
                             <th className="px-4 py-2">Name</th>
                             <th className="px-4 py-2">Wilaya</th>
                             <th className="px-4 py-2">Localisation</th>

@@ -7,7 +7,7 @@ function ErrorElement({ error }) {
                 <h1 className="text-3xl md:text-4xl mb-4 text-red-600">
                     Oops! An Error Occurred
                 </h1>
-                <p className="text-lg mb-4 text-gray-700">
+                <p className="text-lg mb-4 text-gray_v">
                     Something went wrong on this page.
                 </p>
                 {error && (
@@ -15,7 +15,7 @@ function ErrorElement({ error }) {
                         <h2 className="text-xl text-red-600 font-semibold">
                             Error Details:
                         </h2>
-                        <pre className="text-sm text-gray-800 whitespace-pre-wrap">
+                        <pre className="text-sm text-gray_v whitespace-pre-wrap">
                             {error.toString()}
                         </pre>
                     </div>

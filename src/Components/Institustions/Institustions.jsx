@@ -47,10 +47,14 @@ function Institutions() {
     const filteredInstitutions = institutions
         .filter((institution) => {
             const name = institution.Name || "";
-            const email = institution.director_email || "";
             return (
                 name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                email.toLowerCase().includes(searchQuery.toLowerCase())
+                institution.Location.toLowerCase().includes(
+                    searchQuery.toLowerCase()
+                ) ||
+                institution.Wilaya.toLowerCase().includes(
+                    searchQuery.toLowerCase()
+                )
             );
         })
         .filter((institution) => {
@@ -80,7 +84,7 @@ function Institutions() {
                 <div className="text-xl font-semibold text-blue_v">
                     Institutions
                 </div>
-                <div className="mt-4 flex flex-col md:flex-row gap-4 justify-center md:justify-end md:mr-6 md:gap-6 text-gray-600">
+                <div className="mt-4 flex flex-col md:flex-row gap-4 justify-center md:justify-end md:mr-6 md:gap-6 text-gray_v">
                     <div className="border p-2 mr-4 rounded-md flex items-center justify-between gap-2 text-sm font-semibold min-w-[300px]">
                         <IoSearch className="w-fit shrink-0" />
                         <input
@@ -112,13 +116,13 @@ function Institutions() {
                     </select>
                 </div>
                 {filteredInstitutions.length === 0 ? (
-                    <div className="text-center font-semibold text-sm text-gray-600 pt-12">
+                    <div className="text-center font-semibold text-sm text-gray_v pt-12">
                         No institutions found
                     </div>
                 ) : (
                     <table className="table-auto w-full mt-4 text-sm">
                         <thead>
-                            <tr className="bg-gray-200 font-normal">
+                            <tr className="bg-gray_white font-normal">
                                 <th className="px-4 py-2 rounded-tl-md">
                                     Name
                                 </th>
@@ -131,9 +135,7 @@ function Institutions() {
                                 <th className="px-4 py-2 border-l border-white">
                                     Type
                                 </th>
-                                <th className="px-4 py-2 border-l border-white">
-                                    Director Email
-                                </th>
+
                                 <th className="px-4 py-2 border-l border-white rounded-tr-md">
                                     Action
                                 </th>
@@ -154,9 +156,7 @@ function Institutions() {
                                     <td className="border px-4 py-2">
                                         {institution.Type}
                                     </td>
-                                    <td className="border px-4 py-2">
-                                        {institution.director_email}
-                                    </td>
+
                                     <td className="border px-4 py-2">
                                         <button
                                             onClick={() => {
