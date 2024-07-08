@@ -5,20 +5,19 @@ import axios from "axios";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
-import { FaRegBuilding } from "react-icons/fa";
+import { IoSearch } from "react-icons/io5";
 
-function institutions() {
+function Institutions() {
     const navigate = useNavigate();
-    const [companies, setcompanies] = useState([]);
+    const [institutions, setInstitutions] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
+    const [institutionTypeFilter, setInstitutionTypeFilter] = useState("");
 
-    const formatDate = (dateString) => {
-        return dayjs(dateString).format("DD MMMM YYYY");
-    };
     useEffect(() => {
         setLoading(true);
-        const fetchcompanies = async () => {
+        const fetchInstitutions = async () => {
             try {
                 const response = await axios.get(
                     `http://localhost:3000/Admin/Companies`,
@@ -28,8 +27,7 @@ function institutions() {
                     }
                 );
                 if (response.status === 200) {
-                    const companiesData = response.data.companies;
-                    setcompanies(companiesData);
+                    setInstitutions(response.data.companies);
                 } else if (response.status === 401) {
                     Swal.fire("Error", "You should login again", "error");
                     navigate("/Login");
@@ -43,8 +41,24 @@ function institutions() {
             }
         };
 
-        fetchcompanies();
+        fetchInstitutions();
     }, []);
+
+    const filteredInstitutions = institutions
+        .filter((institution) => {
+            const name = institution.Name;
+            const email = institution.director_email;
+            return (
+                name.includes(searchQuery) ||
+                email.includes(searchQuery)
+            );
+        })
+        .filter((institution) => {
+            if (institutionTypeFilter) {
+                return institution.Type === institutionTypeFilter;
+            }
+            return true;
+        });
 
     if (loading) {
         return (
@@ -63,109 +77,99 @@ function institutions() {
     } else {
         return (
             <div className="py-6 px-4">
-                <div className="text-xl font-semibold text-blue_v pb-6">
-                    institution
+                <div className="text-xl font-semibold text-blue_v">
+                    Institutions
                 </div>
-                {!companies || companies.length === 0 ? (
-                    <div className="text-center font-semibold text-sm text-gray-600 pt-6">
-                        No institution found
+                <div className="mt-4 flex flex-col md:flex-row gap-4 justify-center md:justify-end md:mr-6 md:gap-6 text-gray-600">
+                    <div className="border p-2 mr-4 rounded-md flex items-center justify-between gap-2 text-sm font-semibold min-w-[300px]">
+                        <IoSearch className="w-fit shrink-0" />
+                        <input
+                            type="text"
+                            placeholder="Search by name or email"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="w-full"
+                        />
+                    </div>
+
+                    <select
+                        value={institutionTypeFilter}
+                        onChange={(e) =>
+                            setInstitutionTypeFilter(e.target.value)
+                        }
+                        className="border p-2 w-fit mx-auto md:mx-0 rounded-md text-sm font-semibold"
+                    >
+                        <option value="">All Institutions</option>
+                        <option value="imad">Imad</option>
+                        {/* Add other institution types as options here */}
+                    </select>
+                </div>
+                {filteredInstitutions.length === 0 ? (
+                    <div className="text-center font-semibold text-sm text-gray-600 pt-12">
+                        No institutions found
                     </div>
                 ) : (
-                    <div>
-                        <div className="w-full flex gap-12 justify-center py-4">
-                            <div className="max-w-[300px] border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
-                                <div className="text-xs font-semibold pb-5 text-gray_v w-full">
-                                    Total Number of companies:
-                                </div>
-                                <div className="flex justify-between gap-2 mx-2 w-full">
-                                    <div className="font-semibold text-2xl">
-                                        {!companies
-                                            ? 0
-                                            : companies.length > 0
-                                            ? companies.length
-                                            : 0}
-                                    </div>
-                                    <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
-                                        <FaRegBuilding className="shrink-0 text-2xl" />
-                                    </div>
-                                </div>
-                            </div>{" "}
-                            <div className="max-w-[300px] border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
-                                <div className="text-xs font-semibold pb-5 text-gray_v w-full">
-                                    Total Number of institution:
-                                </div>
-                                <div className="flex justify-between gap-2 mx-2 w-full">
-                                    <div className="font-semibold text-2xl">
-                                        {companies.reduce(
-                                            (total, project) =>
-                                                total +
-                                                project?.institutionCount,
-                                            0
-                                        )}
-                                        {/* {companies.length} */}
-                                    </div>
-                                    <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
-                                        <FaRegBuilding className="shrink-0 text-2xl" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <table className="table-auto w-full mt-4 text-sm">
-                            <thead>
-                                <tr className="bg-gray-200 font-normal">
-                                    <th className="px-4 py-2 border-l border-white rounded-tl-md">
-                                        Project Title
-                                    </th>
-                                    <th className="px-4 py-2 border-l border-white">
-                                        Client Company Name
-                                    </th>
-                                    <th className="px-4 py-2 border-l border-white">
-                                        institution Number
-                                    </th>
-                                    <th className="px-4 py-2 border-l border-white">
-                                        project Created At
-                                    </th>
-                                    <th className="px-4 py-2 border-l border-white rounded-tr-md">
-                                        Action
-                                    </th>
+                    <table className="table-auto w-full mt-4 text-sm">
+                        <thead>
+                            <tr className="bg-gray-200 font-normal">
+                                <th className="px-4 py-2 rounded-tl-md">
+                                    Name
+                                </th>
+                                <th className="px-4 py-2 border-l border-white">
+                                    Location
+                                </th>
+                                <th className="px-4 py-2 border-l border-white">
+                                    Wilaya
+                                </th>
+                                <th className="px-4 py-2 border-l border-white">
+                                    Type
+                                </th>
+                                <th className="px-4 py-2 border-l border-white">
+                                    Director Email
+                                </th>
+                                <th className="px-4 py-2 border-l border-white rounded-tr-md">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className="text-xs text-center font-semibold">
+                            {filteredInstitutions.map((institution) => (
+                                <tr key={institution.id}>
+                                    <td className="border px-4 py-2">
+                                        {institution.Name}
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                        {institution.Location}
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                        {institution.Wilaya}
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                        {institution.Type}
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                        {institution.director_email}
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                        <button
+                                            onClick={() => {
+                                                navigate(
+                                                    `/Institustions/${institution.id}`
+                                                );
+                                            }}
+                                            className="bg-blue-500 text-white px-4 py-2 rounded"
+                                        >
+                                            View Profile
+                                        </button>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody className="text-xs text-center font-semibold">
-                                {companies.map((project) => (
-                                    <tr key={project?.id}>
-                                        <td className="border px-4 py-2">
-                                            {project?.title}
-                                        </td>
-                                        <td className="border px-4 py-2">
-                                            {project?.companyName}
-                                        </td>
-                                        <td className="border px-4 py-2">
-                                            {project?.institutionCount}
-                                        </td>
-                                        <td className="border px-4 py-2">
-                                            {formatDate(project?.createdAt)}
-                                        </td>
-                                        <td className="border px-4 py-2">
-                                            <button
-                                                onClick={() => {
-                                                    navigate(
-                                                        `/companies_institution/${project?.id}`
-                                                    );
-                                                }}
-                                                className="bg-blue-500 text-white px-4 py-2 rounded"
-                                            >
-                                                View
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+                            ))}
+                        </tbody>
+                    </table>
                 )}
             </div>
         );
     }
 }
 
-export default institutions;
+export default Institutions;

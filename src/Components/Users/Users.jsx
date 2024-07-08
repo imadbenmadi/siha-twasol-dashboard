@@ -144,7 +144,9 @@ function Users() {
                                         ) : user.userType === "worker" ? (
                                             "Worker"
                                         ) : (
-                                            <span className=" text-red-500">not set</span>
+                                            <span className=" text-red-500">
+                                                not set
+                                            </span>
                                         )}
                                     </td>
                                     <td className="border px-4 py-2">

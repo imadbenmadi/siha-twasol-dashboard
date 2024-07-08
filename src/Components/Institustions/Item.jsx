@@ -1,305 +1,135 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useLocation } from "react-router-dom";
-import { Editor, EditorState, convertFromRaw, ContentState } from "draft-js";
-import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
-dayjs.extend(customParseFormat);
-import { Link } from "react-router-dom";
-function Freelancer_Process_item() {
-    const Navigate = useNavigate();
-    // const [Rejections, SetRejections] = useState([]);
+
+function InstitutionItem() {
     const location = useLocation();
-    const projectId = location.pathname.split("/")[2];
-    const Naviagte = useNavigate();
+    const institution_id = location.pathname.split("/")[2];
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [project, setProject] = useState([]);
-    const [AcceptLoading, setAcceptLoading] = useState(false);
-    const [RejectLoading, setRejectLoading] = useState(false);
-    const [editorState, setEditorState] = useState(EditorState.createEmpty());
+    const [institution, setInstitution] = useState(null);
 
-    // Function to format the date
-    const formatDate = (dateString) => {
-        return dayjs(dateString).format("DD  MMMM  YYYY");
-    };
-
-    const isDraftJSFormat = (str) => {
-        try {
-            const parsed = JSON.parse(str);
-            return parsed.blocks && parsed.entityMap;
-        } catch (e) {
-            return false;
-        }
-    };
     useEffect(() => {
         setLoading(true);
-        const FetchProject = async ({ setProject, setLoading, setError }) => {
-            setLoading(true);
+        const fetchInstitution = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Projects/requests/${projectId}`,
+                    `http://localhost:3000/Admin/Companies/${institution_id}`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,
                     }
                 );
 
-                if (response.status == 200) {
-                    const Project = response.data.project;
-                    setProject(Project);
-                    let contentState;
-                    if (Project.Description) {
-                        // Ensure project.Description is defined
-                        if (isDraftJSFormat(Project.Description)) {
-                            contentState = convertFromRaw(
-                                JSON.parse(Project.Description)
-                            );
-                        } else {
-                            contentState = ContentState.createFromText(
-                                Project.Description
-                            );
-                        }
-                        setEditorState(
-                            EditorState.createWithContent(contentState)
-                        );
-                    } else {
-                        setEditorState(EditorState.createEmpty());
-                    }
-                } else if (response.status == 401) {
-                    Swal.fire("Error", "you should login again", "error");
-                    Naviagte("/Login");
+                if (response.status === 200) {
+                    setInstitution(response.data.company);
+                } else if (response.status === 401) {
+                    Swal.fire("Error", "You should login again", "error");
+                    navigate("/Login");
                 } else {
                     setError(response.data);
                 }
             } catch (error) {
                 setError(error);
             } finally {
-                // setLoading(false);
+                setLoading(false);
             }
         };
 
-        FetchProject({ setProject, setLoading, setError }).then(() => {
-            // fetchRejections({ SetRejections }).then(() => {
-            setLoading(false);
-            // });
-        });
-    }, []);
+        fetchInstitution();
+    }, [institution_id, navigate]);
 
     if (loading) {
         return (
-            <div className=" w-screen h-[80vh] flex flex-col items-center justify-center">
+            <div className="w-screen h-[80vh] flex flex-col items-center justify-center">
                 <span className="loader"></span>
             </div>
         );
     }
-    // else if (error)
-    //     return (
-    //         <div className=" w-screen h-screen flex items-center justify-center">
-    //             <div className="text-red-600 font-semibold">
-    //                 {error.message}
-    //             </div>
-    //         </div>
-    //     );
-    else
-        return (
-            <div className=" w-full h-full relative py-6 px-4">
-                <div className="text-xl font-semibold  text-blue_v pb-6">
-                    Project Details
-                </div>
-                <div className=" text-center font-semibold">
-                    {project?.status === "Payed" && !project?.isWorkUploaded ? (
-                        <>
-                            <div className="">
-                                <span className="text-green_v">Payed :</span>{" "}
-                                payment accepted. <br />a Freelancer is working
-                                on the project
-                            </div>
-                        </>
-                    ) : project?.status === "Payed" &&
-                      project?.isWorkUploaded &&
-                      !project?.isWorkRejected ? (
-                        <div className="">
-                            <span className="text-green_v">Uploaded :</span> The
-                            Freelancer Upload the files of the project .
-                        </div>
-                    ) : project?.status === "Payed" &&
-                      project?.isWorkUploaded &&
-                      project?.isWorkRejected ? (
-                        <div className="">
-                            <span className="text-red-500">
-                                Rejection Sent to the Freelancer :
-                            </span>{" "}
-                            freelancer is correcting the mentioned pointes .
-                        </div>
-                    ) : project?.status === "Rejected" ? (
-                        <div className="">
-                            <span className="text-red-600">Rejected :</span>{" "}
-                            <span className=" text-gray_v">
-                                the project has been rejected.
-                            </span>
-                        </div>
-                    ) : project?.status === "Completed" ? (
-                        <div className="">
-                            <span className="text-green_v">Completed :</span>{" "}
-                            <span className=" text-gray_v">
-                                the project has been closed.
-                            </span>
-                        </div>
-                    ) : !project?.isPayment_ScreenShot_uploaded &&
-                      project?.status === "Accepted" &&
-                      project?.FreelancerId ? (
-                        <div className="">
-                            <span className="text-gray_v">Accepted :</span>{" "}
-                            <span className=" text-red-500">
-                                waiting client to pay the project fees.
-                            </span>
-                        </div>
-                    ) : project?.isPayment_ScreenShot_uploaded &&
-                      project?.status === "Accepted" &&
-                      project?.FreelancerId &&
-                      !project?.isPayment_ScreenShot_Rejected ? (
-                        <div className=" flex justify-center items-center flex-col gap-4">
-                            <div className="">
-                                <span className="text-blue_v">Accepted :</span>{" "}
-                                <span className=" text-gray_v">
-                                    Waiting for payment Validation{" "}
-                                </span>
-                            </div>
-                            <Link
-                                to={`/Projects_Paying/${project.id}`}
-                                className=" text-white bg-green_v py-2 w-fit px-4 rounded-xl "
-                            >
-                                Validate the Payment{" "}
-                            </Link>
-                        </div>
-                    ) : project?.isPayment_ScreenShot_uploaded &&
-                      project?.status === "Accepted" &&
-                      project?.FreelancerId &&
-                      project?.isPayment_ScreenShot_Rejected ? (
-                        <div className="">
-                            <span className="text-red-500">
-                                Payment Rejected :
-                            </span>{" "}
-                            <span className=" text-gray_v">
-                                Payment Rejected , waiting for the Client to
-                                reupload the payment screenshot
-                            </span>
-                        </div>
-                    ) : project?.status === "Accepted" &&
-                      !project?.FreelancerId ? (
-                        <div className=" flex justify-center items-center flex-col gap-4">
-                            <div>
-                                <span className="text-blue_v">Accepted</span>{" "}
-                                Searching For the Freelancer
-                            </div>
-                            <Link
-                                to={`/Projects_Applications/${project.id}`}
-                                className=" text-white bg-green_v py-2 w-fit px-4 rounded-xl "
-                            >
-                                View Applicants
-                            </Link>
-                        </div>
-                    ) : project?.status === "Pending" ? (
-                        <div className=" flex justify-center items-center flex-col gap-4">
-                            <div>
-                                <span className="text-blue_v">Pending</span>{" "}
-                                <span className="">waiting for validation</span>
-                            </div>
-                            <Link
-                                to={`/Projects_Requests/${project.id}`}
-                                className=" text-white bg-green_v py-2 w-fit px-4 rounded-xl "
-                            >
-                                Validate the project
-                            </Link>
-                        </div>
-                    ) : null}
-                </div>
-                <div className="w-[90%] mx-auto max-w-[900px] pt-6">
-                    <div className="font-semibold text-gray_v text-2xl">
-                        {project?.Title}
-                    </div>
 
-                    <div className=" my-6 ">
-                        <div className=" pb-2 font-semibold text-gray_v">
-                            Project Details
-                        </div>
-                        <div className=" border p-4 rounded-lg">
-                            <div className=" flex gap-2 text-sm font-semibold">
-                                <div>Project Title : </div>
-                                <div className=" text-gray_v">
-                                    {project?.Title}
-                                </div>
-                            </div>
-                            <div className="text-sm  mb-2 font-semibold text-white">
-                                <div className=" flex gap-2">
-                                    {project?.Field_is_Graphic_design && (
-                                        <div className="bg-blue_v text-md rounded-lg py-1 mt-2 px-3 ">
-                                            Graphic Design
-                                        </div>
-                                    )}
-                                    {project?.Field_is_Content_creation && (
-                                        <div className="bg-blue_v text-md rounded-lg py-1 mt-2 px-3 ">
-                                            Content creation
-                                        </div>
-                                    )}
-                                    {project?.Field_is_SEO_SIM && (
-                                        <div className="bg-blue_v text-md rounded-lg py-1 mt-2 px-3 ">
-                                            SEO/SMM
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                            {project?.Frelancer_Experiance && (
-                                <div className="flex items-center justify-between w-full">
-                                    <div className="text-sm pt-2 text-gray_v">
-                                        requested frelancer experiance :{" "}
-                                        <span className=" font-semibold">
-                                            {project?.Frelancer_Experiance}
-                                        </span>
-                                    </div>
-                                </div>
-                            )}
-                            <div className="flex items-center justify-between w-full pt-2 font-semibold">
-                                <div className="text-sm pt-1 text-gray_v">
-                                    Expected Deadline : {project?.Expected_Time}
-                                </div>
-                            </div>
-                            <div className="flex items-center justify-between w-full  font-semibold">
-                                <div className="text-sm pt-1 text-gray_v">
-                                    Client Bugdget : {project?.Client_Budget}
-                                </div>
-                            </div>{" "}
-                            <div className="flex items-center justify-between w-full font-semibold">
-                                <div className="text-sm pt-1 text-gray_v">
-                                    Created at :{" "}
-                                    {/* {new Date(
-                                        project?.createdAt
-                                    ).toLocaleDateString()} */}
-                                    {formatDate(project?.createdAt)}
-                                    {/* const formattedDate = */}
-                                    {/* ; */}
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div className="text-sm font-semibold pt-4">
-                                Project Description
-                            </div>
-                            <div className="text-sm font-semibold pl-6 py-6 text-gray_v">
-                                <Editor
-                                    editorState={editorState}
-                                    readOnly={true}
-                                />
-                            </div>
-                        </div>
-                    </div>
+    if (error) {
+        return (
+            <div className="w-screen h-[80vh] flex items-center justify-center">
+                <div className="text-red-600 font-semibold">
+                    {error.message}
                 </div>
             </div>
         );
+    }
+
+    if (!institution) {
+        return null;
+    }
+
+    const director =
+        institution.Directors.length > 0 ? institution.Directors[0] : null;
+
+    return (
+        <div className="container mx-auto px-4 py-8">
+            <div className="flex justify-between items-center mb-6">
+                <div>
+                    <h1 className="text-3xl font-bold">{institution.Name}</h1>
+                    <p className="text-lg text-gray-600">
+                        {institution.Wilaya}/{institution.Location}
+                    </p>
+                </div>
+                <button className="bg-blue-500 text-white px-4 py-2 rounded">
+                    See events
+                </button>
+            </div>
+            {director && (
+                <div className="mb-6">
+                    <h2 className="text-2xl font-semibold mb-2">Director</h2>
+                    <div className="flex gap-4">
+                        <div className="border p-2 rounded-md flex items-center justify-between gap-2 text-sm font-semibold min-w-[300px]">
+                            <span>Email: {director.email}</span>
+                            <button className="text-blue-500">✏️</button>
+                        </div>
+                        <div className="border p-2 rounded-md flex items-center justify-between gap-2 text-sm font-semibold min-w-[300px]">
+                            <span>Password: {director.password}</span>
+                            <button className="text-blue-500">✏️</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            <div>
+                <h2 className="text-2xl font-semibold mb-2">Doctors</h2>
+                <table className="table-auto w-full text-sm">
+                    <thead>
+                        <tr className="bg-gray-200 font-normal">
+                            <th className="px-4 py-2">Name</th>
+                            <th className="px-4 py-2">Wilaya</th>
+                            <th className="px-4 py-2">Localisation</th>
+                            <th className="px-4 py-2">Doctor Profile</th>
+                        </tr>
+                    </thead>
+                    <tbody className="text-center font-semibold">
+                        {institution.Medecins.map((doctor, index) => (
+                            <tr key={index}>
+                                <td className="border px-4 py-2">
+                                    {doctor.name}
+                                </td>
+                                <td className="border px-4 py-2">
+                                    {doctor.wilaya}
+                                </td>
+                                <td className="border px-4 py-2">
+                                    {doctor.localisation}
+                                </td>
+                                <td className="border px-4 py-2">
+                                    <button className="bg-blue-500 text-white px-4 py-2 rounded">
+                                        See Profile
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
 }
 
-export default Freelancer_Process_item;
+export default InstitutionItem;
