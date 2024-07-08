@@ -94,7 +94,7 @@ function Laptop() {
                             Active_nav == "Institustions"
                                 ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-blue_v text-gray_v"
-                            }  transition-all duration-150  cursor-pointer py-1 select-none  
+                        }  transition-all duration-150  cursor-pointer py-1 select-none  
                         w-[150px] rounded-full flex items-center gap-2  `}
                     >
                         <FaRegBuilding className=" text-lg" />
@@ -102,9 +102,9 @@ function Laptop() {
                     </Link>
 
                     <Link
-                        to={"/new_institution"}
+                        to={"/New_institution"}
                         className={` ${
-                            Active_nav == "new_institution"
+                            Active_nav == "New_institution"
                                 ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-blue_v text-gray_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[180px] rounded-full flex items-center gap-2  `}
