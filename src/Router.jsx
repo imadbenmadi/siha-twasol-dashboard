@@ -15,9 +15,9 @@ import Projects_Applications_Profile from "./Components/Projects/Applications/Pr
 import Projects_Paying from "./Components/Projects/Paying/Paying.jsx";
 import Projects_Paying_item from "./Components/Projects/Paying/item.jsx";
 
-import Institustions from "./Components/Projects/Institustions/Institustions.jsx";
-import Institustions_item from "./Components/Projects/Institustions/Item.jsx";
-import new_institution from "./Components/Projects/Institustions/New.jsx";
+import Institustions from "./Components/Institustions/Institustions.jsx";
+import Institustions_item from "./Components/Institustions/Item.jsx";
+import new_institution from "./Components/Institustions/New.jsx";
 
 import Request_Project_Item from "./Components/Projects/Requests/Item.jsx";
 import Feedbacks_Clients from "./Components/Feedbacks/Clients_Freedbacks/Clients_Freedbacks.jsx";
