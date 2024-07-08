@@ -58,7 +58,6 @@ function InstitutionItem() {
                         validateStatus: () => true,
                     }
                 );
-                console.log(response.data);
                 if (response.status === 200) {
                     setInstitution(response.data.company);
                 } else if (response.status === 401) {
@@ -255,7 +254,6 @@ function InstitutionItem() {
                         <tbody className="text-center font-semibold">
                             {institution?.Medecins.map(
                                 (doctor, index) => (
-                                    console.log(doctor),
                                     (
                                         <tr key={index}>
                                             <td className="border px-4 py-2">

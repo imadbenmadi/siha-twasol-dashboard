@@ -53,7 +53,6 @@ const New_institution = () => {
                                 validateStatus: () => true,
                             }
                         );
-                        console.log(response.data);
                         if (response.status === 200) {
                             Swal.fire(
                                 "Success",

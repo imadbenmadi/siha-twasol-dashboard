@@ -37,7 +37,6 @@ const edit_institution = () => {
                         validateStatus: () => true,
                     }
                 );
-                console.log(response.data);
                 if (response.status === 200) {
                     setInstitution(response.data.company);
                 } else if (response.status === 401) {
@@ -115,7 +114,6 @@ const edit_institution = () => {
                                 validateStatus: () => true,
                             }
                         );
-                        console.log(response.data);
                         if (response.status === 200) {
                             Swal.fire(
                                 "Success",

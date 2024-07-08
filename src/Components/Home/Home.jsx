@@ -63,7 +63,6 @@ function Home() {
                         withCredentials: true,
                     }
                 );
-                console.log(response.data);
                 if (response.status === 200) {
                     setData(response.data);
                 } else {
