@@ -46,11 +46,11 @@ function Institutions() {
 
     const filteredInstitutions = institutions
         .filter((institution) => {
-            const name = institution.Name;
-            const email = institution.director_email;
+            const name = institution.Name || "";
+            const email = institution.director_email || "";
             return (
-                name.includes(searchQuery) ||
-                email.includes(searchQuery)
+                name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                email.toLowerCase().includes(searchQuery.toLowerCase())
             );
         })
         .filter((institution) => {
@@ -100,7 +100,14 @@ function Institutions() {
                         className="border p-2 w-fit mx-auto md:mx-0 rounded-md text-sm font-semibold"
                     >
                         <option value="">All Institutions</option>
-                        <option value="imad">Imad</option>
+                        <option value="CHU">CHU</option>
+                        <option value="EPH">EPH</option>
+                        <option value="EHS">EHS</option>
+                        <option value="EHU">EHU</option>
+                        <option value="EPSP">EPSP</option>
+                        <option value="CS">CS</option>
+                        <option value="POLYCLINIQUE">POLYCLINIQUE</option>
+                        <option value="EHP">EHP</option>
                         {/* Add other institution types as options here */}
                     </select>
                 </div>
