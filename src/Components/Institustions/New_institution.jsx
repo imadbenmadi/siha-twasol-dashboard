@@ -9,14 +9,15 @@ const New_institution = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="container mx-auto p-4">
-            <h1 className="text-xl font-semibold mb-4">Add new institution</h1>
+        <div className="container mx-auto py-6 px-4">
+            <div className="text-xl font-semibold text-blue_v mb-12">
+                Add new Institutions
+            </div>
             <Formik
                 initialValues={{
                     name: "",
                     localisation: "",
                     wilaya: "",
-                    doctorsNumber: "",
                     email: "",
                     password: "",
                 }}
@@ -24,10 +25,6 @@ const New_institution = () => {
                     name: Yup.string().required("Required"),
                     localisation: Yup.string().required("Required"),
                     wilaya: Yup.string().required("Required"),
-                    doctorsNumber: Yup.number()
-                        .required("Required")
-                        .positive("Must be a positive number")
-                        .integer("Must be an integer"),
                     email: Yup.string()
                         .email("Invalid email address")
                         .required("Required"),
@@ -66,125 +63,110 @@ const New_institution = () => {
                     }
                 }}
             >
-                <Form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Form className="grid grid-cols-1 md:grid-cols-2 md:gap-12 gap-6 md:px-12">
                     <div>
-                        <label
-                            htmlFor="name"
-                            className="block text-sm font-medium text-gray-700"
-                        >
-                            Full name
-                        </label>
-                        <Field
-                            name="name"
-                            type="text"
-                            className="mt-1 block w-full border rounded-md p-2"
-                        />
-                        <ErrorMessage
-                            name="name"
-                            component="div"
-                            className="text-red-600 text-sm"
-                        />
+                        <div className=" mb-4">
+                            <label
+                                htmlFor="name"
+                                className="block text-md font-medium text-black_text"
+                            >
+                                Full name
+                            </label>
+                            <Field
+                                name="name"
+                                type="text"
+                                className="mt-1 block w-full border rounded-md px-4 py-2"
+                            />
+                            <ErrorMessage
+                                name="name"
+                                component="div"
+                                className="text-red-500 text-sm"
+                            />
+                        </div>
+
+                        <div className=" mb-4">
+                            <label
+                                htmlFor="localisation"
+                                className="block text-md font-medium text-black_text"
+                            >
+                                Localisation
+                            </label>
+                            <Field
+                                name="localisation"
+                                type="text"
+                                className="mt-1 block w-full border rounded-md px-4 py-2"
+                            />
+                            <ErrorMessage
+                                name="localisation"
+                                component="div"
+                                className="text-red-500 text-sm"
+                            />
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="wilaya"
+                                className="block text-md font-medium text-black_text"
+                            >
+                                Wilaya
+                            </label>
+                            <Field
+                                name="wilaya"
+                                type="text"
+                                className="mt-1 block w-full border rounded-md px-4 py-2"
+                            />
+                            <ErrorMessage
+                                name="wilaya"
+                                component="div"
+                                className="text-red-500 text-sm"
+                            />
+                        </div>
                     </div>
 
                     <div>
-                        <label
-                            htmlFor="localisation"
-                            className="block text-sm font-medium text-gray-700"
-                        >
-                            Localisation
-                        </label>
-                        <Field
-                            name="localisation"
-                            type="text"
-                            className="mt-1 block w-full border rounded-md p-2"
-                        />
-                        <ErrorMessage
-                            name="localisation"
-                            component="div"
-                            className="text-red-600 text-sm"
-                        />
+                        <div className=" mb-4">
+                            <label
+                                htmlFor="email"
+                                className="block text-md font-medium text-black_text"
+                            >
+                                Email
+                            </label>
+                            <Field
+                                name="email"
+                                type="email"
+                                className="mt-1 block w-full border rounded-md px-4 py-2"
+                            />
+                            <ErrorMessage
+                                name="email"
+                                component="div"
+                                className="text-red-500 text-sm"
+                            />
+                        </div>
+
+                        <div>
+                            <label
+                                htmlFor="password"
+                                className="block text-md font-medium text-black_text"
+                            >
+                                Password
+                            </label>
+                            <Field
+                                name="password"
+                                type="password"
+                                className="mt-1 block w-full border rounded-md px-4 py-2"
+                            />
+                            <ErrorMessage
+                                name="password"
+                                component="div"
+                                className="text-red-500 text-sm"
+                            />
+                        </div>
                     </div>
 
-                    <div>
-                        <label
-                            htmlFor="wilaya"
-                            className="block text-sm font-medium text-gray-700"
-                        >
-                            Wilaya
-                        </label>
-                        <Field
-                            name="wilaya"
-                            type="text"
-                            className="mt-1 block w-full border rounded-md p-2"
-                        />
-                        <ErrorMessage
-                            name="wilaya"
-                            component="div"
-                            className="text-red-600 text-sm"
-                        />
-                    </div>
-
-                    <div>
-                        <label
-                            htmlFor="doctorsNumber"
-                            className="block text-sm font-medium text-gray-700"
-                        >
-                            Doctors number
-                        </label>
-                        <Field
-                            name="doctorsNumber"
-                            type="text"
-                            className="mt-1 block w-full border rounded-md p-2"
-                        />
-                        <ErrorMessage
-                            name="doctorsNumber"
-                            component="div"
-                            className="text-red-600 text-sm"
-                        />
-                    </div>
-
-                    <div>
-                        <label
-                            htmlFor="email"
-                            className="block text-sm font-medium text-gray-700"
-                        >
-                            Email
-                        </label>
-                        <Field
-                            name="email"
-                            type="email"
-                            className="mt-1 block w-full border rounded-md p-2"
-                        />
-                        <ErrorMessage
-                            name="email"
-                            component="div"
-                            className="text-red-600 text-sm"
-                        />
-                    </div>
-
-                    <div>
-                        <label
-                            htmlFor="password"
-                            className="block text-sm font-medium text-gray-700"
-                        >
-                            Password
-                        </label>
-                        <Field
-                            name="password"
-                            type="password"
-                            className="mt-1 block w-full border rounded-md p-2"
-                        />
-                        <ErrorMessage
-                            name="password"
-                            component="div"
-                            className="text-red-600 text-sm"
-                        />
-                    </div>
-
-                    <div className="md:col-span-2">
+                    <div className="md:col-span-2  mx-auto">
                         <button
                             type="submit"
-                            className="w-full bg-blue-500 text-white py-2 rounded-md"
+                            className="px-6 bg-blue_v font-bold w-fit text-white py-2 rounded-md"
                         >
                             Complete
                         </button>
