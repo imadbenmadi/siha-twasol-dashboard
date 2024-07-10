@@ -10,7 +10,7 @@ const New_institution = () => {
     const [loading, setLoading] = useState(false);
 
     return (
-        <div className="container mx-auto py-6 px-4">
+        <div className=" mx-auto py-6 px-4">
             <div className="text-xl font-semibold text-blue_v mb-12">
                 Add new Institutions
             </div>
