@@ -58,7 +58,7 @@ function Home() {
             setLoading(true);
             try {
                 const response = await axios.get(
-                    "http://localhost:3000/Admin/Home",
+                    "https://api.scs-tawassolsihi.com/Admin/Home",
                     {
                         withCredentials: true,
                     }

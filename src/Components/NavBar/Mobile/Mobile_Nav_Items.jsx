@@ -27,7 +27,7 @@ function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
         try {
             // Send a request to the logout endpoint on the server
             const response = await axios.post(
-                "http://localhost:3000/logout",
+                "https://api.scs-tawassolsihi.com/logout",
                 {},
                 {
                     withCredentials: true,

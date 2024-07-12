@@ -18,7 +18,7 @@ function Contact() {
             setLoading(true);
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Contact`,
+                    `https://api.scs-tawassolsihi.com/Admin/Contact`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,

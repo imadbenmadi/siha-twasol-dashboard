@@ -16,7 +16,7 @@ function App() {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:3000/Admin_CheckAuth",
+                    "https://api.scs-tawassolsihi.com/Admin_CheckAuth",
                     {
                         withCredentials: true,
                         // validateStatus: () => true,

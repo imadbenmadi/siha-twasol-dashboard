@@ -21,7 +21,7 @@ function InstitutionItem() {
         setDeleteLoading(true);
         try {
             const response = await axios.delete(
-                `http://localhost:3000/Admin/Companies/${institution_id}`,
+                `https://api.scs-tawassolsihi.com/Admin/Companies/${institution_id}`,
                 {
                     withCredentials: true,
                     validateStatus: () => true,
@@ -52,7 +52,7 @@ function InstitutionItem() {
         const fetchInstitution = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Companies/${institution_id}`,
+                    `https://api.scs-tawassolsihi.com/Admin/Companies/${institution_id}`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,
@@ -252,33 +252,28 @@ function InstitutionItem() {
                             </tr>
                         </thead>
                         <tbody className="text-center font-semibold">
-                            {institution?.Medecins.map(
-                                (doctor, index) => (
-                                    (
-                                        <tr key={index}>
-                                            <td className="border px-4 py-2">
-                                                {doctor?.firstName}{" "}
-                                                {doctor?.lastName}
-                                            </td>
-                                            <td className="border px-4 py-2">
-                                                {doctor?.telephone}
-                                            </td>
-                                            <td className="border px-4 py-2">
-                                                {doctor?.email}
-                                            </td>
-                                            <td className="border px-4 py-2">
-                                                {doctor?.speciality}
-                                            </td>
-                                            <td className="border px-4 py-2">
-                                                {/* {doctor?.CreatedAt} */}
-                                                {dayjs(
-                                                    doctor?.createdAt
-                                                ).format("DD MMMM YYYY")}
-                                            </td>
-                                        </tr>
-                                    )
-                                )
-                            )}
+                            {institution?.Medecins.map((doctor, index) => (
+                                <tr key={index}>
+                                    <td className="border px-4 py-2">
+                                        {doctor?.firstName} {doctor?.lastName}
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                        {doctor?.telephone}
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                        {doctor?.email}
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                        {doctor?.speciality}
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                        {/* {doctor?.CreatedAt} */}
+                                        {dayjs(doctor?.createdAt).format(
+                                            "DD MMMM YYYY"
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 )}
