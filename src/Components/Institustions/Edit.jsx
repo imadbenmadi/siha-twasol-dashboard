@@ -31,7 +31,7 @@ const edit_institution = () => {
         const fetchInstitution = async () => {
             try {
                 const response = await axios.get(
-                    `https://api.scs-tawassolsihi.com/Admin/Companies/${institution_id}`,
+                    `http://localhost:3000/Admin/Companies/${institution_id}`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,
@@ -100,7 +100,7 @@ const edit_institution = () => {
                     try {
                         setEditLoading(true);
                         const response = await axios.put(
-                            `https://api.scs-tawassolsihi.com/Admin/Companies/${institution_id}`,
+                            `http://localhost:3000/Admin/Companies/${institution_id}`,
                             {
                                 Name: values?.name,
                                 Location: values?.localisation,

@@ -20,7 +20,7 @@ function Institutions() {
         const fetchInstitutions = async () => {
             try {
                 const response = await axios.get(
-                    `https://api.scs-tawassolsihi.com/Admin/Companies`,
+                    `http://localhost:3000/Admin/Companies`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,

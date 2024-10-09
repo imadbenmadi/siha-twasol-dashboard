@@ -32,7 +32,7 @@ function TextEditore({ initialContent }) {
     const [currentColor, setCurrentColor] = useState("BLACK");
 
     useEffect(() => {
-        fetch("https://api.scs-tawassolsihi.com/privacy")
+        fetch("http://localhost:3000/privacy")
             .then((response) => response.json())
             .then((data) => {
                 try {

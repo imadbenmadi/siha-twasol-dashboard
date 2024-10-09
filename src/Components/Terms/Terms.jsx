@@ -28,7 +28,7 @@ function Terms({ initialContent }) {
 
         try {
             const response = await axios.put(
-                "https://api.scs-tawassolsihi.com/privacy",
+                "http://localhost:3000/privacy",
                 {
                     Content: rawContent,
                 },
@@ -63,7 +63,7 @@ function Terms({ initialContent }) {
     const [currentColor, setCurrentColor] = useState("BLACK");
 
     useEffect(() => {
-        fetch("https://api.scs-tawassolsihi.com/privacy")
+        fetch("http://localhost:3000/privacy")
             .then((response) => response.json())
             .then((data) => {
                 try {

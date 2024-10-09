@@ -19,7 +19,7 @@ function Card({ Message, Messages, setMessages }) {
         setDeleteLoading(true);
         try {
             const response = await axios.delete(
-                `https://api.scs-tawassolsihi.com/Admin/Contact/${Message?.id}`,
+                `http://localhost:3000/Admin/Contact/${Message?.id}`,
                 {
                     withCredentials: true,
                     validateStatus: () => true,

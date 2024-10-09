@@ -39,7 +39,7 @@ const New_institution = () => {
                     try {
                         setLoading(true);
                         const response = await axios.post(
-                            "https://api.scs-tawassolsihi.com/Admin/Companies",
+                            "http://localhost:3000/Admin/Companies",
                             {
                                 Name: values?.name,
                                 Location: values?.localisation,
