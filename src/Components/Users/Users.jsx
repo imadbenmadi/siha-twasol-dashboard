@@ -114,9 +114,7 @@ function Users() {
                                 <th className="px-4 py-2 border-l border-white">
                                     Email
                                 </th>
-                                <th className="px-4 py-2 border-l border-white">
-                                    Telephone
-                                </th>
+                                
                                 <th className="px-4 py-2 border-l border-white">
                                     User Type
                                 </th>
