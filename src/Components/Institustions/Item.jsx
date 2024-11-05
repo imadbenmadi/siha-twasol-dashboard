@@ -123,11 +123,11 @@ function InstitutionItem() {
                         </p>
                         <p>
                             <span className="text-lg text-gray_v">
-                                Doctores :
+                                Doctors :
                             </span>{" "}
                             <span className="text-md font-semibold">
-                                {institution?.Medecins.length ? (
-                                    institution?.Medecins.length
+                                {institution?.Doctors.length ? (
+                                    institution?.Doctors.length
                                 ) : (
                                     <span className="text-red-500">0</span>
                                 )}
@@ -226,7 +226,7 @@ function InstitutionItem() {
             )}
             <div className=" mt-12">
                 <h2 className="text-2xl font-semibold mb-2">Doctors</h2>
-                {institution?.Medecins.length === 0 ? (
+                {institution?.Doctors.length === 0 ? (
                     <p className="text-gray_v text-center font-semibold pt-6">
                         No doctors found
                     </p>
@@ -252,7 +252,7 @@ function InstitutionItem() {
                             </tr>
                         </thead>
                         <tbody className="text-center font-semibold">
-                            {institution?.Medecins.map((doctor, index) => (
+                            {institution?.Doctors.map((doctor, index) => (
                                 <tr key={index}>
                                     <td className="border px-4 py-2">
                                         {doctor?.firstName} {doctor?.lastName}

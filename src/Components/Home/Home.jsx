@@ -105,22 +105,22 @@ function Home() {
             return countByDate;
         };
 
-        // Process Malads, Medecins, and Companies
+        // Process Malads, Doctors, and Companies
         const maladByDate = processData(data?.Malads);
-        const medecinsByDate = processData(data?.Medecins);
+        const doctorsByDate = processData(data?.Doctors);
         const companiesByDate = processData(data?.Companies);
 
         const allDates = Array.from(
             new Set([
                 ...Object.keys(maladByDate),
-                ...Object.keys(medecinsByDate),
+                ...Object.keys(doctorsByDate),
                 ...Object.keys(companiesByDate),
             ])
         ).sort();
 
         // Create datasets
         const maladData = allDates.map((date) => maladByDate[date] || 0);
-        const medecinsData = allDates.map((date) => medecinsByDate[date] || 0);
+        const doctorsData = allDates.map((date) => doctorsByDate[date] || 0);
         const companiesData = allDates.map(
             (date) => companiesByDate[date] || 0
         );
@@ -134,8 +134,8 @@ function Home() {
                     backgroundColor: "rgba(255, 99, 132, 0.5)",
                 },
                 {
-                    label: "Medecins",
-                    data: medecinsData,
+                    label: "Doctors",
+                    data: doctorsData,
                     borderColor: "rgb(53, 162, 235)",
                     backgroundColor: "rgba(53, 162, 235, 0.5)",
                 },
@@ -169,11 +169,11 @@ function Home() {
                     </div>
                     <div className="border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
                         <div className="text-xs font-semibold pb-2 text-gray_v w-full">
-                            Medecins:
+                            Doctors:
                         </div>
                         <div className="flex justify-between gap-2 mx-2 w-full">
                             <div className="font-semibold text-2xl">
-                                {data?.Medecin_nbr}
+                                {data?.Doctor_nbr}
                             </div>
                             <div className="shrink-0 text-blue_v border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
                                 <FaUserDoctor className="shrink-0 text-2xl" />

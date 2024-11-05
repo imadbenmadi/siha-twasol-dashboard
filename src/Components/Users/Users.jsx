@@ -95,7 +95,7 @@ function Users() {
                         className="border p-2 w-fit mx-auto md:mx-0 rounded-md text-sm font-semibold"
                     >
                         <option value="">All Users</option>
-                        <option value="medecin">medecins</option>
+                        <option value="doctor">doctors</option>
                         <option value="malad">malads</option>
                         <option value="worker">workers</option>
                     </select>
@@ -141,8 +141,8 @@ function Users() {
                                     <td className="border px-4 py-2">
                                         {user?.userType === "malad" ? (
                                             "Malad"
-                                        ) : user?.userType === "medecin" ? (
-                                            "medecin"
+                                        ) : user?.userType === "doctor" ? (
+                                            "doctor"
                                         ) : user?.userType === "worker" ? (
                                             "Worker"
                                         ) : (
