@@ -93,11 +93,11 @@ function Terms({ initialContent }) {
                         );
                     }
                 } catch (error) {
-                    console.error("Error parsing content:", error);
+                    console.error("Error parsing content:");
                 }
             })
             .catch((error) =>
-                console.error("Error fetching initial content:", error)
+                console.error("Error fetching initial content:")
             );
     }, []);
 
