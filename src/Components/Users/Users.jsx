@@ -163,11 +163,11 @@ function Users() {
                                                     user.userType === "client"
                                                 ) {
                                                     navigate(
-                                                        `/Users/Clients/${user.id}`
+                                                        `/Users/Doctors/${user.id}`
                                                     );
                                                 } else {
                                                     navigate(
-                                                        `/Users/Freelancers/${user.id}`
+                                                        `/Users/Malads/${user.id}`
                                                     );
                                                 }
                                             }}
