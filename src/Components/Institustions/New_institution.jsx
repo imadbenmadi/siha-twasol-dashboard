@@ -68,7 +68,7 @@ const New_institution = () => {
                             );
                         }
                     } catch (error) {
-                        Swal.fire("Error", "An error occurred", "error");
+                        Swal.fire("Error", "", "error");
                     } finally {
                         setSubmitting(false);
                         setLoading(false);

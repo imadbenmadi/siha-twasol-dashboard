@@ -40,7 +40,11 @@ const edit_institution = () => {
                 if (response.status === 200) {
                     setInstitution(response.data.company);
                 } else if (response.status === 401) {
-                    Swal.fire("Error", "You should login again", "error");
+                    Swal.fire(
+                        "Error",
+                        "يجب عليك تسجيل الدخول مرة اخرى",
+                        "error"
+                    );
                     navigate("/Login");
                 } else {
                     // Swal.fire("Error", response.data.message, "error");
@@ -129,7 +133,7 @@ const edit_institution = () => {
                             );
                         }
                     } catch (error) {
-                        Swal.fire("Error", "An error occurred", "error");
+                        Swal.fire("Error", "", "error");
                     } finally {
                         setSubmitting(false);
                         setEditLoading(false);

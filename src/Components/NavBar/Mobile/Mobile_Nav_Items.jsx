@@ -39,10 +39,10 @@ function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
                 Swal.fire("Success!", `Logged Out Successfully`, "success");
                 Navigate("/Login");
             } else {
-                Swal.fire("Error!", `Something Went Wrong ,`, "error");
+                Swal.fire("Error!", "", "error");
             }
         } catch (error) {
-            Swal.fire("Error!", `Something Went Wrong `, "error");
+            Swal.fire("Error!", "", "error");
         }
         setLogoutClicked(false);
     };

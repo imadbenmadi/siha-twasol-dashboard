@@ -35,7 +35,7 @@ function InstitutionItem() {
                 );
                 navigate("/Institustions");
             } else if (response.status === 401) {
-                Swal.fire("Error", "You should login again", "error");
+                Swal.fire("Error", "يجب عليك تسجيل الدخول مرة اخرى", "error");
                 navigate("/Login");
             } else {
                 Swal.fire("Error", response.data.message, "error");
@@ -61,7 +61,11 @@ function InstitutionItem() {
                 if (response.status === 200) {
                     setInstitution(response.data.company);
                 } else if (response.status === 401) {
-                    Swal.fire("Error", "You should login again", "error");
+                    Swal.fire(
+                        "Error",
+                        "يجب عليك تسجيل الدخول مرة اخرى",
+                        "error"
+                    );
                     navigate("/Login");
                 } else {
                     // Swal.fire("Error", response.data.message, "error");

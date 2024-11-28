@@ -30,20 +30,21 @@ function Card({ Message, Messages, setMessages }) {
                     (item) => item?.id !== Message?.id
                 );
                 setMessages(newMessages);
-                Swal.fire("Success", "Message Deleted Successfully", "success");
+                Swal.fire("نجاح", "تم حذف الرسالة بنجاح", "success");
             } else if (response.status === 401) {
                 Swal.fire(
-                    "Unauthorized",
-                    "Please You have to Login Again",
+                    "غير مصرح",
+                    "يجب عليك تسجيل الدخول مرة أخرى",
                     "error"
                 );
                 Navigate("/Login");
-            } else Swal.fire("Error", "Somthing went wrong", "error");
+            } else Swal.fire("خطأ", "حدث خطأ ما", "error");
         } catch (err) {
-            Swal.fire("Error", "Somthing went wrong", "error");
+            Swal.fire("خطأ", "حدث خطأ ما", "error");
         } finally {
             setDeleteLoading(false);
         }
+
     };
 
     return (
