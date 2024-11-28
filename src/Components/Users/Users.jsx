@@ -153,7 +153,7 @@ function Users() {
                                     </td>
                                     <td className="border px-4 py-2">
                                         {dayjs(user?.createdAt).format(
-                                            "DD MMMM YYYY"
+                                            "DD-MMM-YYYY"
                                         )}
                                     </td>
                                     {/* <td className="border px-4 py-2">

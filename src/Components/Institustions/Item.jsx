@@ -269,7 +269,7 @@ function InstitutionItem() {
                                     <td className="border px-4 py-2">
                                         {/* {doctor?.CreatedAt} */}
                                         {dayjs(doctor?.createdAt).format(
-                                            "DD MMMM YYYY"
+                                            "DD-MMM-YYYY"
                                         )}
                                     </td>
                                 </tr>
