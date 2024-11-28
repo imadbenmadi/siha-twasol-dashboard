@@ -79,7 +79,7 @@ function Home() {
 
     if (loading) {
         return (
-            <div className="w-[80vw] h-[80vh] flex flex-col items-center justify-center">
+            <div className="w-[100vw] h-[80vh] flex flex-col items-center justify-center">
                 <span className="loader"></span>
             </div>
         );
